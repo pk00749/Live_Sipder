@@ -6,10 +6,12 @@ from bs4 import BeautifulSoup
 
 TOTAL_PAGES = 1
 
-class DySpyder():
+
+class DySpyder:
 
     def __init__(self):
         self.url = self.get_url()
+        self.soups = self.from_url_get_all_lis()
 
     def get_url(self):
         for page in [j + 1 for j in range(TOTAL_PAGES)]:
@@ -26,29 +28,27 @@ class DySpyder():
         soup = BeautifulSoup(data, 'html.parser').findAll("li")
         return soup
 
-    def tv_spyder(self, x):
-        rid = re.findall(""".*?data-rid="(.*?)".*""", str(x))[0]
-        title = re.findall(""".*?title=(.*?)>.*""", str(x))[0]
-        href = re.findall(""".*?href="(.*?)".*""", str(x))[0]
+    def tv_spyder(self, soup):
+        rid = re.findall(""".*?data-rid="(.*?)".*""", str(soup))[0]
+        title = re.findall(""".*?title=(.*?)>.*""", str(soup))[0]
+        href = re.findall(""".*?href="(.*?)".*""", str(soup))[0]
         # pic = re.findall('''.*?<img data-original="(.*?)".*''', str(x))[0]
-        tag = re.findall('''.*<span class="tag ellipsis">(.*?)</span>.*''', str(x))[0]
-        name = re.findall('''.*<span class="dy-name ellipsis fl">(.*?)</span>.*''', str(x))[0]
-        see_num = re.findall(""".*<span class="dy-num fr".*?>(.*?)</span>.*""", str(x))[0]
-        t = rid,  title, tag, name, see_num, href
-        return t
+        tag = re.findall('''.*<span class="tag ellipsis">(.*?)</span>.*''', str(soup))[0]
+        name = re.findall('''.*<span class="dy-name ellipsis fl">(.*?)</span>.*''', str(soup))[0]
+        see_num = re.findall(""".*<span class="dy-num fr".*?>(.*?)</span>.*""", str(soup))[0]
+        info = rid,  title, tag, name, see_num, href
+        return info
 
-
-
+    def save(self):
+        list_anchor = []
+        for soup in self.soups:
+            try:
+                list_anchor.append(list(douyu.tv_spyder(soup)))
+            except:
+                print("Fail...")
+        df = pd.DataFrame(np.array(list_anchor))
+        df.to_csv("demo.csv")
 
 if __name__ == '__main__':
-    res1 = []
     douyu = DySpyder()
-    print(douyu.from_url_get_all_lis())
-    for x in douyu.from_url_get_all_lis():
-        try:
-            res1.append(list(douyu.tv_spyder(x)))
-        except:
-            print("Fail...")
-
-    df = pd.DataFrame(np.array(res1))
-    df.to_csv("demo.csv")
+    douyu.save()
