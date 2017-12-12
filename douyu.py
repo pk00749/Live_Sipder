@@ -4,22 +4,26 @@ import pandas as pd
 import numpy as np
 from bs4 import BeautifulSoup
 
+TOTAL_PAGES = 1
+
 class DySpyder():
 
-    def __init__(self, url):
-        self.url = url
-        self.soup =""
+    def __init__(self):
+        self.url = self.get_url()
 
-    def open_url(self, url):
+    def get_url(self):
+        for page in [j + 1 for j in range(TOTAL_PAGES)]:
+            return "https://www.douyu.com/directory/all?page="+ str(page) +"&isAjax=1"
+
+    def open_url(self):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
-        req = ur.Request(url=url, headers=headers)  # python2，urllib.request()
-        response = ur.urlopen(req)  # python2，urllib2.urlopen()
+        req = ur.Request(url=self.url, headers=headers)
+        response = ur.urlopen(req)
         return response.read().decode('utf-8')
 
     def from_url_get_all_lis(self):
-        data = self.open_url(self.url)
-        self.soup = BeautifulSoup(data, 'html.parser')
-        soup = self.soup.findAll("li")
+        data = self.open_url()
+        soup = BeautifulSoup(data, 'html.parser').findAll("li")
         return soup
 
     def tv_spyder(self, x):
@@ -33,21 +37,18 @@ class DySpyder():
         t = rid,  title, tag, name, see_num, href
         return t
 
-def get_url(page):
-    return "https://www.douyu.com/directory/all?page="+ str(page) +"&isAjax=1"
+
 
 
 if __name__ == '__main__':
     res1 = []
-    for i in [j + 1 for j in range(1)]:
-        douyu = DySpyder(get_url(i))
-
-        print(douyu.from_url_get_all_lis())
-        for x in douyu.from_url_get_all_lis():
-            try:
-                res1.append(list(douyu.tv_spyder(x)))
-            except:
-                print("Fail...")
+    douyu = DySpyder()
+    print(douyu.from_url_get_all_lis())
+    for x in douyu.from_url_get_all_lis():
+        try:
+            res1.append(list(douyu.tv_spyder(x)))
+        except:
+            print("Fail...")
 
     df = pd.DataFrame(np.array(res1))
     df.to_csv("demo.csv")
