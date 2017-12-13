@@ -4,18 +4,18 @@ import pandas as pd
 import numpy as np
 from bs4 import BeautifulSoup
 
-TOTAL_PAGES = 1
+TOTAL_PAGES = 2
 
 
 class DySpyder:
 
-    def __init__(self):
+    def __init__(self,page):
         self.url = self.get_url()
         self.soups = self.from_url_get_all_lis()
 
     def get_url(self):
-        for page in [j + 1 for j in range(TOTAL_PAGES)]:
-            return "https://www.douyu.com/directory/all?page="+ str(page) +"&isAjax=1"
+        print("https://www.douyu.com/directory/all?page=" + str(page) + "&isAjax=1")
+        return "https://www.douyu.com/directory/all?page=" + str(page) + "&isAjax=1"
 
     def open_url(self):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
@@ -47,8 +47,10 @@ class DySpyder:
             except:
                 print("Fail...")
         df = pd.DataFrame(np.array(list_anchor))
-        df.to_csv("demo.csv")
+        df.to_csv('page_%s.csv' % (page))
+
 
 if __name__ == '__main__':
-    douyu = DySpyder()
-    douyu.save()
+    for page in range(1, TOTAL_PAGES+1):
+        douyu = DySpyder(page)
+        douyu.save()
