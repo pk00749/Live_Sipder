@@ -3,23 +3,32 @@ from selenium import webdriver
 import time
 import os
 
-
-def open():
-    # driver = webdriver.PhantomJS()
-    # driver.get("http://hotel.qunar.com/")
-    url="http://www.huya.com/a16789"
+def start_chrome():
     chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
     os.environ["webdriver.chrome.driver"] = chromedriver
     driver = webdriver.Chrome(chromedriver)
+    driver.implicitly_wait(30)  # 隐式等待
+    return driver
+
+def open_url():
+    # driver = webdriver.PhantomJS()
+    # driver.get("http://hotel.qunar.com/")
+    driver = start_chrome()
+    url="http://www.huya.com/a16789"
     driver.get(url)
     driver.implicitly_wait(15)
     data = driver.title
     print(data)
-    driver.find_element_by_link_text("登录").click()
 
+    return driver
+
+
+def send_msg():
+    driver = open_url()
+    driver.find_element_by_link_text("登录").click()
+    driver.implicitly_wait(15)
     frame = driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
     driver.switch_to.frame(frame)
-    # # driver.switch_to.active_element()
     time.sleep(3)
     ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
     ele.send_keys("13250219510")
@@ -30,7 +39,7 @@ def open():
     time.sleep(2)
     driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
     print("Login success")
-
+    time.sleep(5)
     driver.switch_to.default_content() # switch to main page
     msg = driver.find_element_by_xpath("//*[@id='pub_msg_input']")
     msg.send_keys('Hello')
@@ -41,6 +50,5 @@ def open():
     msg = driver.find_element_by_xpath("//*[@id='pub_msg_input']")
 
 
-
 if __name__ == '__main__':
-    open()
+    send_msg()
