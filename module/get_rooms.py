@@ -19,9 +19,9 @@ def get_game_url(num):
 
 
 def get_room_list():
-    for i in range(1,10):
+    for i in range(1,2): # TODO:
         # home = "http://www.huya.com/g/4"
-        home = get_game_url(i)
+        home = get_game_url(4)
         # 模拟请求头
         headers = {
             "Host": "www.huya.com",
@@ -45,7 +45,7 @@ def get_room_list():
             hrefs.append(a['href'])
 
         df = pd.DataFrame(np.array(hrefs))
-        df.to_csv('room_list.csv')
+        df.to_csv('../room_list.csv')
 
 
 if __name__ == '__main__':
