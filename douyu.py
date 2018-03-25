@@ -8,6 +8,8 @@ TOTAL_PAGES = 2
 
 
 class DySpyder:
+    def __init__(self, pages):
+        self.pages = pages
 
     def get_url(self,page):
         print("https://www.douyu.com/directory/all?page=" + str(page) + "&isAjax=1")
@@ -37,7 +39,7 @@ class DySpyder:
 
     def export(self):
         list_anchor = []
-        for page in range(1, TOTAL_PAGES + 1):
+        for page in range(1, self.pages + 1):
             for soup in self.from_url_get_all_lis(page):
                 try:
                     list_anchor.append(list(self.tv_spyder(soup)))
@@ -49,17 +51,5 @@ class DySpyder:
 
 
 if __name__ == '__main__':
-    douyu = DySpyder()
+    douyu = DySpyder(TOTAL_PAGES)
     douyu.export()
-
-
-    # def save(self):
-    #     for soup in self.soups:
-    #         try:
-    #             self.list_anchor.append(list(douyu.tv_spyder(soup)))
-    #         except:
-    #             print("Fail...")
-    #
-    # def export(self):
-    #     self.save()
-    #     return self.list_anchor

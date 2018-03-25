@@ -2,6 +2,8 @@ import urllib.request
 from selenium import webdriver
 import time
 import os
+import pandas as pd
+import csv
 
 def start_chrome():
     chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
@@ -10,11 +12,28 @@ def start_chrome():
     driver.implicitly_wait(30)  # 隐式等待
     return driver
 
-def open_url():
+
+def read_csv():
+    # with open('room_list.csv', 'r') as csv_file:
+    #     reader = csv.reader(csv_file)
+    #     reader.read
+    # results = pd.read_csv('room_list.csv')
+    # print(results.to_string)
+    # print(type(results.to_string))
+    all_urls = []
+    reader = csv.reader(open('room_list.csv', encoding='utf-8'))
+    for url in reader:
+        all_urls.append(url[1])
+
+    total_url = len(all_urls)
+    return total_url, all_urls
+
+
+def open_url(url):
     # driver = webdriver.PhantomJS()
     # driver.get("http://hotel.qunar.com/")
     driver = start_chrome()
-    url="http://www.huya.com/a16789"
+    # url="http://www.huya.com/a16789"
     driver.get(url)
     driver.implicitly_wait(15)
     data = driver.title
@@ -23,8 +42,8 @@ def open_url():
     return driver
 
 
-def send_msg():
-    driver = open_url()
+def send_msg(url):
+    driver = open_url(url)
     driver.find_element_by_link_text("登录").click()
     driver.implicitly_wait(15)
     frame = driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
@@ -50,5 +69,14 @@ def send_msg():
     msg = driver.find_element_by_xpath("//*[@id='pub_msg_input']")
 
 
+def main():
+    total_url, all_urls = read_csv()
+    for u in range(1, total_url):
+        url = all_urls[u]
+        print(url)
+        send_msg(url)
+
+
 if __name__ == '__main__':
-    send_msg()
+    # send_msg()
+    main()
