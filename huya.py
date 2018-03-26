@@ -35,27 +35,6 @@ class Huya_Sipder:
         total_url = len(all_urls)
         return total_url, all_urls
 
-
-    def is_login(self):
-        url = "http://www.huya.com/a16789"
-        self.driver.get(url)
-        # html = self.driver.page_source
-        # print(html.find("登录"))
-        # u, p = self.__login_info()
-        # //*[@id="login-username"]
-        if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
-            print('Need to login')
-            self.login(url)
-        else:
-            print("no need to login")
-
-    def logined(self, driver):
-        if driver.find_element_by_xpath("//*[@id='login-username']").text == "":
-            print('Need to login')
-        else:
-            print("no need to login")
-
-
     def save_cookie(self):
         '''保存cookie'''
         # 将cookie序列化保存下来
@@ -80,59 +59,57 @@ class Huya_Sipder:
         except Exception as e:
             print(e)
 
-    def login(self, url):
+    def login(self):
         # driver = webdriver.PhantomJS()
         # driver.get("http://hotel.qunar.com/")
         driver = self.driver
-        # url="http://www.huya.com/a16789"
         __username, __password = self.__login_info()
-        driver.get(url)
-        driver.implicitly_wait(15)
+        # driver.implicitly_wait(15)
         title = driver.title
         print(title)
 
-        driver.find_element_by_link_text("登录").click()
-        driver.implicitly_wait(15)
-        frame = driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
-        driver.switch_to.frame(frame)
+        self.driver.find_element_by_link_text("登录").click()
+        self.driver.implicitly_wait(15)
+        frame = self.driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
+        self.driver.switch_to.frame(frame)
         time.sleep(3)
 
-        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
+        ele = self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
         ele.send_keys(__username)
 
-        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
+        ele = self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
         ele.send_keys(__password)
 
         time.sleep(2)
-        driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
+        self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
 
         print("Login success")
-        # self.logined(driver)
-        time.sleep(5)
-        driver.switch_to.default_content()  # switch to main page
+        time.sleep(3)
+        self.driver.switch_to.default_content()  # switch to main page
 
-
-        msg = driver.find_element_by_xpath("//*[@id='pub_msg_input']")
+    def send_msg(self):
+        msg = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
         msg.send_keys('Hello')
         time.sleep(3)
         # driver.find_element_by_xpath("//*[@id='msg_send_bt']").click()
-        driver.find_element_by_id('msg_send_bt').click()
+        self.driver.find_element_by_id('msg_send_bt').click()
         time.sleep(3)
-        msg = driver.find_element_by_xpath("//*[@id='pub_msg_input']")
-        return driver
-
-    def send_msg(self):
-        # driver = self.open_url(url)
-        pass
 
     def main(self):
         total_url, all_urls = self.read_csv()
         for u in range(1, total_url):
             url = all_urls[u]
             print(url)
-            self.login(url)
+            self.driver.get(url)
+            if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
+                print('Need to login')
+                self.login()
+                self.send_msg()
+            else:
+                print("No need to login")
+                self.send_msg()
 
 
 if __name__ == '__main__':
     huya = Huya_Sipder()
-    huya.is_login()
+    huya.main()
