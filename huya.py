@@ -2,7 +2,6 @@ import urllib.request
 from selenium import webdriver
 import time
 import os
-import pandas as pd
 import csv
 from module.config import Config
 import pickle
@@ -36,18 +35,18 @@ class Huya_Sipder:
         return total_url, all_urls
 
     def save_cookie(self):
-        '''保存cookie'''
+        """ 保存cookie """
         # 将cookie序列化保存下来
         pickle.dump(self.driver.get_cookies(), open("cookies.pkl", "wb"))
 
     def set_cookie(self):
-        '''往浏览器添加cookie'''
-        '''利用pickle序列化后的cookie'''
+        """ 往浏览器添加cookie 利用pickle序列化后的cookie """
+
         try:
             cookies = pickle.load(open("cookies.pkl", "rb"))
             for cookie in cookies:
                 cookie_dict = {
-                    "domain": ".baidu.com",  # 火狐浏览器不用填写，谷歌要需要
+                    "domain": ".huya.com",  # 火狐浏览器不用填写，谷歌要需要
                     'name': cookie.get('name'),
                     'value': cookie.get('value'),
                     "expires": "",
@@ -90,10 +89,10 @@ class Huya_Sipder:
     def send_msg(self):
         msg = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
         msg.send_keys('Hello')
-        time.sleep(3)
+        time.sleep(5)
         # driver.find_element_by_xpath("//*[@id='msg_send_bt']").click()
         self.driver.find_element_by_id('msg_send_bt').click()
-        time.sleep(3)
+        time.sleep(5)
 
     def main(self):
         total_url, all_urls = self.read_csv()
@@ -101,9 +100,11 @@ class Huya_Sipder:
             url = all_urls[u]
             print(url)
             self.driver.get(url)
+            time.sleep(3)
             if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
                 print('Need to login')
                 self.login()
+                self.save_cookie()
                 self.send_msg()
             else:
                 print("No need to login")
