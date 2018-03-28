@@ -2,14 +2,14 @@ import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
-# import csv
-import unicodecsv
 import re
 import os
 
 
 # TODO: get number of audiences
 # TODO: list title into csv
+
+
 
 def get_game_url(num):
     base_url = "http://www.huya.com/g/"
@@ -37,9 +37,7 @@ def get_room_list():
 
         print(total_rooms)
         hrefs = []
-        # with open('room_list.csv', 'w') as csv_file:
-        #     writer = unicodecsv.writer(csv_file)
-        # writer.writerow(["href", "title"])
+
         for a in live_rooms.find_all('a', class_='title new-clickstat', href=True):
             print(a['href'], a['title'])
             hrefs.append(a['href'])
@@ -49,8 +47,8 @@ def get_room_list():
 
 
 if __name__ == '__main__':
+    # test()
     get_room_list()
-
 
 
 

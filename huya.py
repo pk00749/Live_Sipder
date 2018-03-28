@@ -5,6 +5,7 @@ import os
 import csv
 from module.config import Config
 import pickle
+from module.admin_excel import admin_workbook
 
 
 class Huya_Sipder:
@@ -13,10 +14,18 @@ class Huya_Sipder:
         self.driver = self.start_chrome()
 
     def __login_info(self):
-        config = Config()
-        login = config.get_config_info()
-        login_info = config.get_config_info()
-        return login_info['username'], login['password']
+        # config = Config()
+        # login = config.get_config_info()
+        # login_info = config.get_config_info()
+        test = admin_workbook('huya.xlsx')
+        test.load_workbook()
+        username = test.read_cell('登录', 'A2')
+        password = test.read_cell('登录', 'B2')
+
+        # for i in range(10):
+        #     room["A%d" % (i+1)].value = i + 1
+        # return login_info['username'], login['password']
+        return username, password
 
     def start_chrome(self):
         chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
