@@ -57,10 +57,6 @@ class AdminWorkbook:
 # workbook.save('../huya.xlsx')
 
 
-
-
-
-
 # import xlsxwriter as xw
 # #新建excel
 # workbook  = xw.Workbook('huya.xlsx')
@@ -71,44 +67,3 @@ class AdminWorkbook:
 # sheet_login.write('B1', '密码')
 # #关闭保存
 # workbook.close()
-
-
-
-# # import csv
-# #
-# # with open('names.csv', 'w') as csvfile:
-# #     fieldnames = ['first_name', 'last_name']
-# #     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-# #
-# #     writer.writeheader()
-# #     writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
-# #     # writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
-# #     # writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
-# #
-# #
-# # import csv
-# # fname = 'testcsv.csv'
-# # with open(fname,'w', newline='') as csvfile: # 解决写入空行问题 使用wb不会再每一行后面插入空行
-# #     csvwriter = csv.writer(csvfile)
-# #     lst= [[1,2,3],[4,5,6]]
-# #     csvwriter.writerows(lst)
-#
-# # import csv
-# # with open('eggs.csv', 'w', newline='') as csvfile:
-# #     spamwriter = csv.writer(csvfile, delimiter=' ',
-# #                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
-# #     spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
-# #     spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
-#
-# import csv
-#
-# #python2可以用file替代open
-# with open("test.csv","w") as csvfile:
-#     writer = csv.writer(csvfile)
-#
-#     #先写入columns_name
-#     writer.writerow(["index","a_name","b_name"])
-#     #写入多行用writerows
-#     writer.writerows([[0,1,3],[1,2,3],[2,3,4]])
-
-

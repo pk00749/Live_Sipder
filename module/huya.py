@@ -25,7 +25,7 @@ class Spider:
 
     def read_csv(self):
         all_urls = []
-        reader = csv.reader(open('room_list.csv', encoding='utf-8'))
+        reader = csv.reader(open('../room_list.csv', encoding='utf-8'))
         for url in reader:
             all_urls.append(url[1])
 
@@ -110,8 +110,8 @@ class Spider:
                 self.send_msg()
 
 
-def huya_spider():
-    workbook = AdminWorkbook('huya.xlsx')
+def huya_spider(file):
+    workbook = AdminWorkbook(file)
     workbook.load_workbook()
 
     for i in range(1,2):
@@ -122,4 +122,4 @@ def huya_spider():
         spider.main()
 
 if __name__ == '__main__':
-    huya_spider()
+    huya_spider('../huya.xlsx')
