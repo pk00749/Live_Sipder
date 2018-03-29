@@ -6,13 +6,13 @@ import os
 # workbook.create_sheet('登录')
 # workbook.create_sheet('房间')
 
-#
-class admin_workbook:
-#
+
+class AdminWorkbook:
+
     def __init__(self, workbook_name):
         self.workbook_name = workbook_name
         self.workbook = self.load_workbook()
-#
+
     def load_workbook(self):
         workbook = openpyxl.load_workbook(self.workbook_name)
         return workbook

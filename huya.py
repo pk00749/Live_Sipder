@@ -5,27 +5,16 @@ import os
 import csv
 from module.config import Config
 import pickle
-from module.admin_excel import admin_workbook
+from module.admin_excel import AdminWorkbook
 
 
-class Huya_Sipder:
+class Spider:
 
-    def __init__(self):
+    def __init__(self, username, password, msg):
         self.driver = self.start_chrome()
-
-    def __login_info(self):
-        # config = Config()
-        # login = config.get_config_info()
-        # login_info = config.get_config_info()
-        test = admin_workbook('huya.xlsx')
-        test.load_workbook()
-        username = test.read_cell('登录', 'A2')
-        password = test.read_cell('登录', 'B2')
-
-        # for i in range(10):
-        #     room["A%d" % (i+1)].value = i + 1
-        # return login_info['username'], login['password']
-        return username, password
+        self.username = username
+        self.password = password
+        self.msg = msg
 
     def start_chrome(self):
         chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
@@ -71,7 +60,8 @@ class Huya_Sipder:
         # driver = webdriver.PhantomJS()
         # driver.get("http://hotel.qunar.com/")
         driver = self.driver
-        __username, __password = self.__login_info()
+        __username = self.username
+        __password = self.password
         # driver.implicitly_wait(15)
         title = driver.title
         print(title)
@@ -88,7 +78,7 @@ class Huya_Sipder:
         ele = self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
         ele.send_keys(__password)
 
-        time.sleep(2)
+        time.sleep(1)
         self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
 
         print("Login success")
@@ -97,11 +87,11 @@ class Huya_Sipder:
 
     def send_msg(self):
         msg = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
-        msg.send_keys('Hello')
-        time.sleep(5)
+        msg.send_keys(self.msg)
+        time.sleep(3)
         # driver.find_element_by_xpath("//*[@id='msg_send_bt']").click()
         self.driver.find_element_by_id('msg_send_bt').click()
-        time.sleep(5)
+        time.sleep(3)
 
     def main(self):
         total_url, all_urls = self.read_csv()
@@ -120,6 +110,16 @@ class Huya_Sipder:
                 self.send_msg()
 
 
+def huya_spider():
+    workbook = AdminWorkbook('huya.xlsx')
+    workbook.load_workbook()
+
+    for i in range(1,2):
+        username = workbook.read_cell('登录', 'A%d'% (i + 1))
+        password = workbook.read_cell('登录', 'B%d' % (i + 1))
+        msg = workbook.read_cell('登录', 'D%d' % (i + 1))
+        spider = Spider(username, password, msg)
+        spider.main()
+
 if __name__ == '__main__':
-    huya = Huya_Sipder()
-    huya.main()
+    huya_spider()
