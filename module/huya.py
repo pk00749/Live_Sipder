@@ -5,24 +5,28 @@ import os
 import csv
 import pickle
 from module.admin_excel import AdminWorkbook
+from module.get_rooms import GetRooms
 
-
-SEND_FREQUENCE = 5
 TOTAL_ADVERTISEMENT = 2
+
 
 class Spider:
 
-    def __init__(self, file, username, password, no):
-        self.driver = self.start_chrome()
+    def __init__(self, file, username, password, no, browser):
+        self.driver = self.start_chrome(browser)
         self.username = username
         self.password = password
         self.workbook = AdminWorkbook(file)
         self.no = no
 
-    def start_chrome(self):
-        chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
-        os.environ["webdriver.chrome.driver"] = chromedriver
-        driver = webdriver.Chrome(chromedriver)
+    def start_chrome(self, browser):
+        if browser == '-ch':
+            chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
+            os.environ["webdriver.chrome.driver"] = chromedriver
+            driver = webdriver.Chrome(chromedriver)
+        else:
+            driver = webdriver.PhantomJS()
+            driver.maximize_window()
         driver.implicitly_wait(30)  # 隐式等待
         return driver
 
@@ -60,8 +64,6 @@ class Spider:
             print(e)
 
     def login(self):
-        # driver = webdriver.PhantomJS()
-        # driver.get("http://hotel.qunar.com/")
         driver = self.driver
         __username = self.username
         __password = self.password
@@ -69,8 +71,15 @@ class Spider:
         title = driver.title
         print(title)
 
-        self.driver.find_element_by_link_text("登录").click()
-        self.driver.implicitly_wait(15)
+        # self.driver.find_element_by_link_text("登录").click()
+        # nav-login
+        # //*[@id="nav-login"]
+        self.driver.find_element_by_id('nav-login').click()
+        # self.driver.find_element_by_class_name('')
+        # self.driver.find_element_by_xpath("//*[@id='J_duyaHeaderRight']/div/div[5]/div/div").click()
+        # //*[@id="J_duyaHeaderRight"]/div/div[5]/div/div
+        # //*[@id="nav-login"]
+        
         frame = self.driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
         self.driver.switch_to.frame(frame)
         time.sleep(3)
@@ -96,14 +105,18 @@ class Spider:
         self.driver.find_element_by_id('msg_send_bt').click()
         time.sleep(3)
 
+
     def send_advertisement(self):
+        send_frequence = self.workbook.read_cell('设置', 'A2')
         if self.workbook.read_cell('登录', 'D%d' % self.no):
             msg_1 = self.workbook.read_cell('登录', 'D%d' % self.no)
             self.send_msg(msg_1)
-            time.sleep(SEND_FREQUENCE)
+            time.sleep(send_frequence)
+            print('Message 1 sent!')
             if self.workbook.read_cell('登录', 'E%d' % self.no):
                 msg_2 = self.workbook.read_cell('登录', 'E%d' % self.no)
                 self.send_msg(msg_2)
+                print('Message 2 sent!')
 
     def close_driver(self):
         self.driver.close()
@@ -125,17 +138,19 @@ class Spider:
                 self.send_advertisement()
 
 
-def huya_spider(file):
+def huya_spider(file, browser):
     workbook = AdminWorkbook(file)
     workbook.load_workbook()
+    get_rooms = GetRooms(file)
 
-    for i in range(1,workbook.get_max_row('登录')+1):
+    for i in range(1, workbook.get_max_row('登录') + 1):
         no = i + 1
-        username = workbook.read_cell('登录', 'A%d'% no)
+        get_rooms.get_room_list(no)
+        username = workbook.read_cell('登录', 'A%d' % no)
         if username:
             password = workbook.read_cell('登录', 'B%d' % no)
             if password:
-                spider = Spider(file, username, password, no)
+                spider = Spider(file, username, password, no, browser)
                 spider.main()
                 spider.close_driver()
             else:
@@ -143,7 +158,8 @@ def huya_spider(file):
         else:
             print("No User Name!!!")
 
+
 if __name__ == '__main__':
-    huya_spider('../huya.xlsx')
-
-
+    huya_spider('../huya.xlsx', '-ch')
+    # t = Spider('../huya.xlsx','13250219510','81302137hy',1)
+    # print(t.main())
