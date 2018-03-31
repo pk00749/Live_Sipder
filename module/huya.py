@@ -3,18 +3,21 @@ from selenium import webdriver
 import time
 import os
 import csv
-from module.config import Config
 import pickle
 from module.admin_excel import AdminWorkbook
 
 
+SEND_FREQUENCE = 5
+TOTAL_ADVERTISEMENT = 2
+
 class Spider:
 
-    def __init__(self, username, password, msg):
+    def __init__(self, file, username, password, no):
         self.driver = self.start_chrome()
         self.username = username
         self.password = password
-        self.msg = msg
+        self.workbook = AdminWorkbook(file)
+        self.no = no
 
     def start_chrome(self):
         chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
@@ -85,13 +88,25 @@ class Spider:
         time.sleep(3)
         self.driver.switch_to.default_content()  # switch to main page
 
-    def send_msg(self):
-        msg = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
-        msg.send_keys(self.msg)
+    def send_msg(self, msg):
+        msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
+        msg_input.send_keys(msg)
         time.sleep(3)
         # driver.find_element_by_xpath("//*[@id='msg_send_bt']").click()
         self.driver.find_element_by_id('msg_send_bt').click()
         time.sleep(3)
+
+    def send_advertisement(self):
+        if self.workbook.read_cell('登录', 'D%d' % self.no):
+            msg_1 = self.workbook.read_cell('登录', 'D%d' % self.no)
+            self.send_msg(msg_1)
+            time.sleep(SEND_FREQUENCE)
+            if self.workbook.read_cell('登录', 'E%d' % self.no):
+                msg_2 = self.workbook.read_cell('登录', 'E%d' % self.no)
+                self.send_msg(msg_2)
+
+    def close_driver(self):
+        self.driver.close()
 
     def main(self):
         total_url, all_urls = self.read_csv()
@@ -104,22 +119,31 @@ class Spider:
                 print('Need to login')
                 self.login()
                 self.save_cookie()
-                self.send_msg()
+                self.send_advertisement()
             else:
                 print("No need to login")
-                self.send_msg()
+                self.send_advertisement()
 
 
 def huya_spider(file):
     workbook = AdminWorkbook(file)
     workbook.load_workbook()
 
-    for i in range(1,2):
-        username = workbook.read_cell('登录', 'A%d'% (i + 1))
-        password = workbook.read_cell('登录', 'B%d' % (i + 1))
-        msg = workbook.read_cell('登录', 'D%d' % (i + 1))
-        spider = Spider(username, password, msg)
-        spider.main()
+    for i in range(1,workbook.get_max_row('登录')+1):
+        no = i + 1
+        username = workbook.read_cell('登录', 'A%d'% no)
+        if username:
+            password = workbook.read_cell('登录', 'B%d' % no)
+            if password:
+                spider = Spider(file, username, password, no)
+                spider.main()
+                spider.close_driver()
+            else:
+                print("No Password!!!")
+        else:
+            print("No User Name!!!")
 
 if __name__ == '__main__':
     huya_spider('../huya.xlsx')
+
+

@@ -1,11 +1,4 @@
 import openpyxl
-import os
-# 新建文件
-# workbook = openpyxl.Workbook()
- # 写入文件
-# workbook.create_sheet('登录')
-# workbook.create_sheet('房间')
-
 
 class AdminWorkbook:
 
@@ -29,6 +22,38 @@ class AdminWorkbook:
     def save_workbook(self):
         self.workbook.save(self.workbook_name)
 
+    def get_max_row(self, sheet_name):
+        sheet = self.workbook.get_sheet_by_name(sheet_name)
+        return sheet.max_row - 1
+        # for row in sheet.iter_rows():
+        #     for cell in row:
+        #         print(cell.value)
+
+if __name__ == '__main__':
+    t = AdminWorkbook('../huya.xlsx')
+    print(t.get_max_row('登录'))
+    for i in range(1,2):
+        print(i)
+    # workbook = openpyxl.Workbook()
+    # 写入文件
+    # workbook.create_sheet('登录')
+    # ws = workbook.create_sheet('房间')
+    # test = admin_workbook('huya.xlsx')
+    # test.load_workbook()
+    # test.write_cell('房间', 'C2', 'www.baidu.com')
+    # print(test.read_cell('登录', 'A1'))
+
+
+
+# In [115]: sheetContent.get_highest_row()
+#
+# In [117]: sheetContent.get_highest_column()
+
+# 新建文件
+# workbook = openpyxl.Workbook()
+ # 写入文件
+# workbook.create_sheet('登录')
+# workbook.create_sheet('房间')
 # test = admin_workbook('huya.xlsx')
 # test.load_workbook()
 # test.write_cell('房间', 'C2', 'www.baidu.com')
