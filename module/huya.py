@@ -30,17 +30,6 @@ class Spider:
         driver.implicitly_wait(30)  # 隐式等待
         return driver
 
-    def read_csv(self, no):
-        topic = self.workbook.read_cell('登录', 'C%d' % no)
-        return self.workbook.get_max_row(topic)
-        # all_urls = []
-        # reader = csv.reader(open('../room_list.csv', encoding='utf-8'))
-        # for url in reader:
-        #     all_urls.append(url[1])
-        #
-        # total_url = len(all_urls)
-        # return total_url, all_urls
-
     def save_cookie(self):
         """ 保存cookie """
         # 将cookie序列化保存下来
@@ -120,12 +109,10 @@ class Spider:
         self.driver.close()
 
     def main(self, no):
-        # total_url, all_urls = self.read_csv()
         topic = self.workbook.read_cell('登录', 'C%d' % no)
-        total_url =  self.workbook.get_max_row(topic)
+        total_url = self.workbook.get_max_row(topic)
         for u in range(1, total_url):
-            # url = all_urls[u]
-            url = self.workbook.read_cell(topic,'B%d' % u)
+            url = self.workbook.read_cell(topic, 'B%d' % u)
             print(url)
             self.driver.get(url)
             time.sleep(3)
@@ -147,7 +134,7 @@ def huya_spider(file, browser):
 
     for i in range(1, workbook.get_max_row('登录') + 1):
         no = i + 1
-        # room_list.get_all_rooms_list(no)
+        room_list.get_all_rooms_list(no)
         username = workbook.read_cell('登录', 'A%d' % no)
         if username:
             password = workbook.read_cell('登录', 'B%d' % no)
