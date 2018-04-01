@@ -89,19 +89,18 @@ class GetRooms:
 
         return current_total_rooms_in_topic
 
-    def get_all_rooms_list(self):
-        # break_flag = False
-        # while break_flag != True:
+    def get_all_rooms_list(self, no):
+        self.get_topic_url(no)
         while True:
-            self.total_rooms = t.get_room_list()
+            self.total_rooms = self.get_room_list()
             time.sleep(3)
-            print(self.is_element_existed('laypage_next'))
+            print("Next Page?: %s" % self.is_element_existed('laypage_next'))
             if self.is_element_existed('laypage_next'):
-            # if  WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'laypage_next'))):
                 time.sleep(2)
                 self.driver.find_element_by_class_name('laypage_next').click()
                 print('next page')
             else:
+                print('All room get in the topic!')
                 self.driver.close()
                 break
 
@@ -117,6 +116,4 @@ class GetRooms:
 
 if __name__ == '__main__':
     t = GetRooms('../huya.xlsx')
-    t.get_topic_url(2)
-    t.get_all_rooms_list()
-
+    t.get_all_rooms_list(2)
