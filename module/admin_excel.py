@@ -28,12 +28,19 @@ class AdminWorkbook:
         # for row in sheet.iter_rows():
         #     for cell in row:
         #         print(cell.value)
+    def create_sheet(self, name):
+        if name in self.workbook.get_sheet_names():
+            print("sheet existed")
+        else:
+            self.workbook.create_sheet(name)
+        self.save_workbook()
 
 if __name__ == '__main__':
     t = AdminWorkbook('../huya.xlsx')
     print(t.get_max_row('登录'))
     for i in range(1,2):
         print(i)
+
     # workbook = openpyxl.Workbook()
     # 写入文件
     # workbook.create_sheet('登录')

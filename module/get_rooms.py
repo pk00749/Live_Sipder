@@ -1,13 +1,12 @@
 import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
-import numpy as np
+import time
 from module.admin_excel import AdminWorkbook
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.phantomjs.webdriver
 
 # TODO: get number of audiences
 # TODO: list title into csv
@@ -18,6 +17,7 @@ class GetRooms:
         self.workbook = AdminWorkbook(file)
         self.driver = self.start_browser()
         self.total_rooms = 0
+        self.topic = ''
 
     def get_base_url(self):
         base_url = self.workbook.read_cell('设置','B2')
@@ -59,11 +59,12 @@ class GetRooms:
         self.workbook.save_workbook()
 
     def get_topic_url(self, no):
-        topic = self.workbook.read_cell('登录', 'C%d' % no)
-        print(topic)
+        self.topic = self.workbook.read_cell('登录', 'C%d' % no)
+        print(self.topic)
+        self.workbook.create_sheet(self.topic)
         max_row = self.workbook.get_max_row('主题列表')
         for row in range(1, max_row+1):
-            if self.workbook.read_cell('主题列表', 'A%d' % row) == topic:
+            if self.workbook.read_cell('主题列表', 'A%d' % row) == self.topic:
                 print(self.workbook.read_cell('主题列表', 'B%d' % row))
                 self.driver.get(self.workbook.read_cell('主题列表', 'B%d' % row))
                 # return self.workbook.read_cell('主题列表', 'B%d' % row)
@@ -76,32 +77,42 @@ class GetRooms:
         live_rooms = page_soup.find("ul", attrs={"class": "live-list clearfix"})
         total_rooms_in_page = len(live_rooms.find_all('a', class_='title new-clickstat', href=True))
 
-        print(total_rooms_in_page)
-        self.total_rooms += total_rooms_in_page
-        print(self.total_rooms)
-        hrefs = []
-
+        current_total_rooms_in_topic = self.total_rooms + total_rooms_in_page
+        r = 1
         for a in live_rooms.find_all('a', class_='title new-clickstat', href=True):
             print(a['href'], a['title'])
-            hrefs.append(a['href'])
+            if self.total_rooms + r <= current_total_rooms_in_topic:
+                print(self.total_rooms + r)
+                self.workbook.write_cell(self.topic, 'A%d' % (self.total_rooms + r), a['title'])
+                self.workbook.write_cell(self.topic, 'B%d' % (self.total_rooms + r), a['href'])
+                r += 1
 
-        df = pd.DataFrame(np.array(hrefs))
-        df.to_csv('../room_list.csv')
-
-        # for r in range(self.total_rooms+1, total_rooms)
-        # self.workbook.write_cell('房间','A%d' % )
+        return current_total_rooms_in_topic
 
     def get_all_rooms_list(self):
-        break_flag = False
-        while break_flag != True:
-            self.get_room_list()
-            print(WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'laypage_next'))))
-            if  WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'laypage_next'))):
-                WebDriverWait(self.driver, 10).until(
-                    EC.visibility_of_element_located((By.CLASS_NAME, 'laypage_next'))).click()
+        # break_flag = False
+        # while break_flag != True:
+        while True:
+            self.total_rooms = t.get_room_list()
+            time.sleep(3)
+            print(self.is_element_existed('laypage_next'))
+            if self.is_element_existed('laypage_next'):
+            # if  WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'laypage_next'))):
+                time.sleep(2)
+                self.driver.find_element_by_class_name('laypage_next').click()
                 print('next page')
             else:
-                break_flag = True
+                self.driver.close()
+                break
+
+    def is_element_existed(self, element):
+        flag = True
+        try:
+            self.driver.find_element_by_class_name(element)
+            return flag
+        except:
+            flag = False
+            return flag
 
 
 if __name__ == '__main__':
