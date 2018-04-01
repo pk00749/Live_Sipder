@@ -1,13 +1,13 @@
-import urllib.request
 from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 import time
 import os
 import csv
 import pickle
 from module.admin_excel import AdminWorkbook
 from module.get_rooms import GetRooms
-
-TOTAL_ADVERTISEMENT = 2
 
 
 class Spider:
@@ -67,22 +67,17 @@ class Spider:
         driver = self.driver
         __username = self.username
         __password = self.password
-        # driver.implicitly_wait(15)
         title = driver.title
         print(title)
 
         # self.driver.find_element_by_link_text("登录").click()
-        # nav-login
-        # //*[@id="nav-login"]
-        self.driver.find_element_by_id('nav-login').click()
-        # self.driver.find_element_by_class_name('')
-        # self.driver.find_element_by_xpath("//*[@id='J_duyaHeaderRight']/div/div[5]/div/div").click()
-        # //*[@id="J_duyaHeaderRight"]/div/div[5]/div/div
-        # //*[@id="nav-login"]
-        
-        frame = self.driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
-        self.driver.switch_to.frame(frame)
-        time.sleep(3)
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'nav-login'))).click()
+        # self.driver.find_element_by_id('nav-login').click()
+        WebDriverWait(driver, 10).until(
+            EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//*[@id='udbsdk_frm_normal']")))
+        # frame = self.driver.find_element_by_xpath("//*[@id='udbsdk_frm_normal']")
+        # self.driver.switch_to.frame(frame)
+        time.sleep(1)
 
         ele = self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
         ele.send_keys(__username)
@@ -94,17 +89,18 @@ class Spider:
         self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
 
         print("Login success")
-        time.sleep(3)
+        time.sleep(2)
         self.driver.switch_to.default_content()  # switch to main page
 
     def send_msg(self, msg):
-        msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
+        msg_input = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
+        # msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
         msg_input.send_keys(msg)
         time.sleep(3)
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
         # driver.find_element_by_xpath("//*[@id='msg_send_bt']").click()
-        self.driver.find_element_by_id('msg_send_bt').click()
-        time.sleep(3)
-
+        # self.driver.find_element_by_id('msg_send_bt').click()
+        time.sleep(2)
 
     def send_advertisement(self):
         send_frequence = self.workbook.read_cell('设置', 'A2')
@@ -128,6 +124,7 @@ class Spider:
             print(url)
             self.driver.get(url)
             time.sleep(3)
+
             if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
                 print('Need to login')
                 self.login()
