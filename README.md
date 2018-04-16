@@ -1,5 +1,7 @@
 ##### 安装以下库
+```python
 pip install selenium openpyxl lxml pandas beautifulsoup4 logging pickle configparser
+```
 
 注意：windows下，phantomjs需要手动安装
 
