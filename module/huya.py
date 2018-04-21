@@ -23,7 +23,11 @@ class Spider:
         if browser == '-ch':
             chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
             os.environ["webdriver.chrome.driver"] = chromedriver
-            driver = webdriver.Chrome(chromedriver)
+            # driver = webdriver.Chrome(chromedriver)
+            option = webdriver.ChromeOptions()
+            # option.add_argument('headless')
+
+            driver = webdriver.Chrome(chromedriver, chrome_options=option)
         else:
             driver = webdriver.PhantomJS()
             driver.maximize_window()
@@ -134,7 +138,7 @@ def huya_spider(file, browser):
 
     for i in range(1, workbook.get_max_row('登录') + 1):
         no = i + 1
-        room_list.get_all_rooms_list(no)
+        # room_list.get_all_rooms_list(no)
         username = workbook.read_cell('登录', 'A%d' % no)
         if username:
             password = workbook.read_cell('登录', 'B%d' % no)
@@ -149,6 +153,6 @@ def huya_spider(file, browser):
 
 
 if __name__ == '__main__':
-    huya_spider('../huya.xlsx', '-ch')
+    huya_spider('../huya.xlsx','hl')
     # t = Spider('../huya.xlsx','13250219510','81302137hy',1)
     # print(t.main())
