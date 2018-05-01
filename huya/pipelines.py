@@ -35,6 +35,8 @@ class HuyaPipeline(object):
     #     # print(response.xpath('//span[@id="login-username"]/@title').extract()[0])
         if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
             print('Need to login')
+            self.login()
+            self.save_cookie()
         else:
             print("NO need to login")
             self.driver.get(room_url)
@@ -54,7 +56,7 @@ class HuyaPipeline(object):
     def save_cookie(self):
         """ 保存cookie """
         # 将cookie序列化保存下来
-        pickle.dump(self.driver.get_cookies(), open("cookies.pkl", "wb"))
+        pickle.dump(self.driver.get_cookies(), open("../cookies/cookies.pkl", "wb"))
 
     def set_cookie(self):
         try:
@@ -75,8 +77,8 @@ class HuyaPipeline(object):
 
     def login(self):
         driver = self.driver
-        __username = ''#self.username
-        __password = ''#self.password
+        __username = '13250219510'#self.username
+        __password = '81302137hy'#self.password
         title = driver.title
         print(title)
 
@@ -99,8 +101,8 @@ class HuyaPipeline(object):
         self.driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
 
         print("Login success")
-        time.sleep(2)
-        self.driver.switch_to.default_content()  # switch to main page
+        # time.sleep(2)
+        # self.driver.switch_to.default_content()  # switch to main page
 
     def send_msg(self, msg):
         msg_input = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
