@@ -67,11 +67,9 @@ class HuyaSpider(CrawlSpider):
             room_id = body_json['data']['datas'][room]['profileRoom']
             items['room'] = room_id
             items['room_url'] = self.room_base_url + room_id
-            # print(self.room_base_url + room_id)
+            time.sleep(3)
+            yield items
         self.logger.info('Total rooms: ' + str(self.total_rooms))
-
-
-
 
 
 
