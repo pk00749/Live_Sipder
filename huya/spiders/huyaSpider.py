@@ -8,9 +8,7 @@ from huya.items import HuyaItem
 import json
 from scrapy.http import Request, HtmlResponse
 from huya.spiders.admin_excel import AdminWorkbook
-from huya.spiders.get_rooms import GetRooms
 import websocket, _thread, time
-import pickle
 
 
 class HuyaSpider(CrawlSpider):
@@ -19,7 +17,6 @@ class HuyaSpider(CrawlSpider):
     total_rooms = 0
     no = 2
     file_path = 'G:\Program\Projects\Live_Sipder\huya.xlsx'
-    # get_room = GetRooms(file_path)
     workbook = AdminWorkbook(file_path)
     allowed_domains = ["huya.com"]
     base_url = 'https://www.huya.com/g/'
@@ -67,7 +64,7 @@ class HuyaSpider(CrawlSpider):
             room_id = body_json['data']['datas'][room]['profileRoom']
             items['room'] = room_id
             items['room_url'] = self.room_base_url + room_id
-            time.sleep(3)
+            time.sleep(2)
             yield items
         self.logger.info('Total rooms: ' + str(self.total_rooms))
 
