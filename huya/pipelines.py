@@ -5,38 +5,43 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-import pickle, time, os
+import pickle, time, os, json
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 
-
 class HuyaPipeline(object):
 
     def __init__(self):
         self.driver = self.start_chrome()
-        self.json = pickle.load(open("./json/1.pkl", "rb"))
-
-
-    def process_item(self, item, spider):
-        self.is_login(item.get('room_url'))
-        return item
+        self.json = self.load_json()
 
     def open_spider(self, spider):
+        print('open_spider')
         self.driver.get("https://www.huya.com/g/lol")
-        self.set_cookie()
+        if os.path.exists("./cookies/{username}.pkl".format(username=self.json.get('name'))):
+            print("cookie existed.")
+            self.set_cookie()
+            self.driver.refresh()
+        else:
+            print("cookie don't existed.")
         self.driver.refresh()
 
     def close_spider(self, spider):
         # self.driver.close()
         pass
 
+    def process_item(self, item, spider):
+        print('process_item')
+        self.is_login(item.get('room_url'))
+        return item
+
     def is_login(self, room_url):
     #     # login_name = driver.find_element_by_xpath("//*[@id='login-username']").text
     #     # print(response.xpath('//span[@id="login-username"]/@title').extract()[0])
-        if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
+        if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "": #//*[@id="login-username"]
             print('Need to login')
             self.login()
             self.save_cookie()
@@ -56,21 +61,35 @@ class HuyaPipeline(object):
         # chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
         # os.environ["webdriver.chrome.driver"] = chromedriver
         # option = webdriver.ChromeOptions()
-        # option.add_argument('headless')
+        # # option.add_argument('headless') # can't use
         # driver = webdriver.Chrome(chromedriver, chrome_options=option)
 
         driver.implicitly_wait(30)  # 隐式等待
         return driver
 
+    def load_json(self):
+        return pickle.load(open("./json/temp.pkl", "rb"))
+
     def save_cookie(self):
         """ 保存cookie """
         # 将cookie序列化保存下来
-        pickle.dump(self.driver.get_cookies(), open("./cookies/cookies.pkl", "wb"))
+        pickle.dump(self.driver.get_cookies(), open("./cookies/{username}.pkl".format(username=self.json.get('name')), "wb"))
+        # with open("./cookies/test.txt", "wb") as file:
+        #     file.write(self.driver.get_cookies())
+        print('------------------------------------------------')
+        print(self.driver.get_cookies())
+        # jsoncookie =json.dumps(self.driver.get_cookies())
+        # with open("./cookies/test_2.json", "wb") as file_2:
+        #     file_2.write(jsoncookie)
 
     def set_cookie(self):
+        print('set_cookie')
         try:
-            cookies = pickle.load(open("./cookies/cookies.pkl", "rb"))
+            cookies = pickle.load(open("./cookies/{username}.pkl".format(username=self.json.get('name')), "rb"))
             for cookie in cookies:
+                print(cookie)
+                print(cookie.get('name'))
+                print(cookie.get('value'))
                 cookie_dict = {
                     "domain": ".huya.com",  # 火狐浏览器不用填写，谷歌要需要
                     'name': cookie.get('name'),
@@ -78,8 +97,8 @@ class HuyaPipeline(object):
                     "expires": "",
                     'path': '/',
                     'httpOnly': False,
-                    'HostOnly': False,
-                    'Secure': False}
+                    'hostOnly': False,
+                    'secure': False}
                 self.driver.add_cookie(cookie_dict)
         except Exception as e:
             print(e)
