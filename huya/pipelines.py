@@ -5,17 +5,20 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-import pickle, time
+import pickle, time, os
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 
+
 class HuyaPipeline(object):
 
     def __init__(self):
         self.driver = self.start_chrome()
+        self.json = pickle.load(open("./json/1.pkl", "rb"))
+
 
     def process_item(self, item, spider):
         self.is_login(item.get('room_url'))
@@ -50,17 +53,23 @@ class HuyaPipeline(object):
         service_args.append('--ignore-ssl-errors=true')
         driver = webdriver.PhantomJS() # service_args=service_args
         driver.maximize_window()
+        # chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
+        # os.environ["webdriver.chrome.driver"] = chromedriver
+        # option = webdriver.ChromeOptions()
+        # option.add_argument('headless')
+        # driver = webdriver.Chrome(chromedriver, chrome_options=option)
+
         driver.implicitly_wait(30)  # 隐式等待
         return driver
 
     def save_cookie(self):
         """ 保存cookie """
         # 将cookie序列化保存下来
-        pickle.dump(self.driver.get_cookies(), open("../cookies/cookies.pkl", "wb"))
+        pickle.dump(self.driver.get_cookies(), open("./cookies/cookies.pkl", "wb"))
 
     def set_cookie(self):
         try:
-            cookies = pickle.load(open("cookies.pkl", "rb"))
+            cookies = pickle.load(open("./cookies/cookies.pkl", "rb"))
             for cookie in cookies:
                 cookie_dict = {
                     "domain": ".huya.com",  # 火狐浏览器不用填写，谷歌要需要
@@ -77,8 +86,8 @@ class HuyaPipeline(object):
 
     def login(self):
         driver = self.driver
-        __username = '13250219510'#self.username
-        __password = '81302137hy'#self.password
+        __username = self.json.get('name') # '13250219510'#self.username
+        __password =  self.json.get('password')#self.password
         title = driver.title
         print(title)
 
