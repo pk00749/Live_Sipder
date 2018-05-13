@@ -5,9 +5,9 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.selector import Selector
 from huya.items import HuyaItem
-import json
+import json, pickle
 from scrapy.http import Request, HtmlResponse
-from huya.spiders.admin_excel import AdminWorkbook
+# from huya.spiders.admin_excel import AdminWorkbook
 import websocket, _thread, time
 
 
@@ -16,8 +16,8 @@ class HuyaSpider(CrawlSpider):
     name = 'huya'
     total_rooms = 0
     no = 2
-    file_path = 'G:\Program\Projects\Live_Sipder\huya.xlsx'
-    workbook = AdminWorkbook(file_path)
+    # file_path = 'G:\Program\Projects\Live_Sipder\huya.xlsx'
+    # workbook = AdminWorkbook(file_path)
     allowed_domains = ["huya.com"]
     base_url = 'https://www.huya.com/g/'
     start_urls = ['https://www.huya.com/g/']
@@ -30,7 +30,9 @@ class HuyaSpider(CrawlSpider):
     def parse(self, response):
         self.logger.info("METHOD - parse, visited by %s", response.url)
         all_topics = response.xpath('//ul[@class="game-list clearfix"]/li')
-        topic = self.workbook.read_cell('登录', 'C%d' % self.no)
+        json = self.load_json()
+        # topic = self.workbook.read_cell('登录', 'C%d' % self.no)
+        topic = json.get('topic')
         self.logger.info('Topic: ' + topic)
         for each_topic in all_topics:
             if topic == each_topic.xpath('./a/img/@title').extract()[0]:
@@ -44,6 +46,7 @@ class HuyaSpider(CrawlSpider):
         self.logger.info("METHOD - page, visited by %s", response.url)
         total_pages = response.xpath('//div[@class="list-page"]/@data-pages').extract()[0]
         self.logger.info("Total pages of the topic: " + total_pages)
+
         for p in range(1, int(total_pages) + 1):
             url = self.topic_url_by_page(response.meta['gid'], p)
             yield Request(url, callback=self.get_room_url)
@@ -68,6 +71,8 @@ class HuyaSpider(CrawlSpider):
             yield items
         self.logger.info('Total rooms: ' + str(self.total_rooms))
 
+    def load_json(self):
+        return pickle.load(open("./json/temp.pkl", "rb"))
 
 
 

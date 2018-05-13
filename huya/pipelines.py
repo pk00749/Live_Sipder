@@ -135,7 +135,7 @@ class HuyaPipeline(object):
         # send_frequence = self.workbook.read_cell('设置', 'A2')
         # if self.workbook.read_cell('登录', 'D%d' % self.no):
         #     msg_1 = self.workbook.read_cell('登录', 'D%d' % self.no)
-        self.send_msg('666')
+        self.send_msg(self.json.get('msg'))
             # time.sleep(send_frequence)
         print('Message 1 sent!')
             # if self.workbook.read_cell('登录', 'E%d' % self.no):
