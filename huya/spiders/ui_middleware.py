@@ -22,7 +22,7 @@ class LiveSpiderWindow(QMainWindow, Ui_MainWindow):
         self.get_radio_status()
 
         if self.is_clicked_rb_1:
-            self.save_json()
+            self.save_json(1)
             start_huya_spider()
             if os.path.exists("./json/temp.pkl"):
                 os.remove("./json/temp.pkl")
@@ -39,9 +39,11 @@ class LiveSpiderWindow(QMainWindow, Ui_MainWindow):
         return [self.is_clicked_rb_1,self.is_clicked_rb_2, self.is_clicked_rb_3, self.is_clicked_rb_4, self.is_clicked_rb_5]
 
 
-    def save_json(self):
-        meta = {'name': str(self.ui.table_info.item(0, 1).text()),
-                    'password': str(self.ui.table_info.item(0, 2).text())
+    def save_json(self, no):
+        meta = {'name': str(self.ui.table_info.item(no - 1, 1).text()),
+                'password': str(self.ui.table_info.item(no - 1, 2).text()),
+                'topic': str(self.ui.table_info.item(no - 1, 4).text()),
+                'msg': str(self.ui.table_info.item(no - 1, 5).text())
                 }
         pickle.dump(meta, open("./json/temp.pkl", "wb"))
 
