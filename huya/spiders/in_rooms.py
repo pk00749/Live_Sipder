@@ -16,30 +16,32 @@ MONGODB_CONFIG = {
 
 HOME_PAGE = 'https://www.huya.com/g'
 BASE_URL_FOR_ROOM = 'https://www.huya.com/'
+PHANTOMJS_MAX = 1
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
                     filename='../log/in_room.log',
                     datefmt='%Y/%m/%d %H:%M:%S',
                     format='%%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(module)s - %(message)s')
 
 class conphantomjs:
-    jiange = 0.00001  ##开启phantomjs间隔
-    timeout = 20  ##设置phantomjs超时时间
+    jiange = 0.00001  # 开启phantomjs间隔
+    timeout = 20  # 设置phantomjs超时时间
     # path = "D:\python27\Scripts\phantomjs.exe"  ##phantomjs路径
     # service_args = ['--load-images=no', '--disk-cache=yes']  ##参数设置
 
-    def __init__(self, name, password):
+    def __init__(self, name, password, msg):
         self.logger = logging.getLogger(__name__)
         self.logger.info('Initialing...')
-        self.phantomjs_max = 5  ##同时开启phantomjs个数
+        self.phantomjs_max = PHANTOMJS_MAX  # 同时开启phantomjs个数
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
-        self.q_phantomjs = queue.Queue()  ##存放phantomjs进程队列
+        self.q_phantomjs = queue.Queue()  # 存放phantomjs进程队列
         self.user_name = name
         self.password = password
+        self.msg = msg
 
     def login(self, driver):
-        self.logger.info('logging...')
+        self.logger.info('logging, user name: %s' % self.user_name)
         # popup = browser.switch_to_frame('udb_exchange3lgn')
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'nav-login'))).click()
         WebDriverWait(driver, 10).until(
@@ -51,20 +53,20 @@ class conphantomjs:
         ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
         ele.send_keys(self.password)
 
-        time.sleep(1)
+        time.sleep(0.5)
         driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
 
         time.sleep(0.5)
 
-    def load_cookie(self, n, name):
-        self.logger.info('loading cookies, user name: %s' % name)
+    def load_pickle(self, n, name):
+        self.logger.info('loading pickle...')
         for i in range(1, len(n)):
             if n[i]['name'] == name:
                 print(n[i]['value'])
                 return n[i]['value']
 
-    def addCookiesWithURL(self, browser, name):
-        print('adding cookies, user name: %s' % name)
+    def set_cookies(self, browser, name):
+        print('setting cookies, user name: %s' % name)
         try:
             with open('../cookies/{user_name}.pkl'.format(user_name=name), 'rb')as fp:
                 n = pickle.load(fp)
@@ -146,38 +148,39 @@ class conphantomjs:
         driver.maximize_window()
         driver.get(HOME_PAGE)
         self.login(driver)
-        self.logger.info('saving cookies...')
+        self.logger.info('saving cookies, user name: %s' % self.user_name)
         pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=self.user_name), "wb"))
 
-    def access_with_cookies(self, driver, url):
+    def open_url_with_cookies(self, driver, url):
+        self.logger.info('opening url: %s' % url)
         driver.maximize_window()
         driver.get(url)
         time.sleep(0.5)
-        self.addCookiesWithURL(driver, self.user_name)
+        self.set_cookies(driver, self.user_name)
         time.sleep(0.5)
         driver.refresh()
 
-        # self.save_cookies(driver, self.user_name)
-
     def getbody(self, url):
-        '''利用phantomjs获取网站源码以及url'''
+        """利用phantomjs获取网站源码以及url"""
         d = self.q_phantomjs.get()
         print('room: ' + url)
         print('driver id: ' + str(d))
         try:
             if os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
                 self.logger.info('cookie found...')
-                self.access_with_cookies(d, url)
+                self.open_url_with_cookies(d, url)
             time.sleep(0.5)
+
+            # TODO: to judge user name so that no need to set cookie each time
+            # '//*[@id="login-username"]'
         except Exception:
             print("Phantomjs Open url Error")
 
-        self.send_msg(d, '666')
+        self.send_msg(d, self.msg)
         self.q_phantomjs.put(d)
 
-
     def open_phantomjs(self):
-        '''多线程开启phantomjs进程'''
+        """多线程开启phantomjs进程"""
         def open_threading():
             # service_args = []
             # service_args.append('--disk-cache=yes')
@@ -207,8 +210,9 @@ class conphantomjs:
             i.join()
 
     def close_phantomjs(self):
-        '''多线程关闭phantomjs对象'''
+        """多线程关闭phantomjs对象"""
         th = []
+
         def close_threading():
             d = self.q_phantomjs.get()
             d.quit()
@@ -223,11 +227,11 @@ class conphantomjs:
 
     def main(self):
         # 1. check cookies exist or not. if not, give cookies
-        if not os.path.exists('./cookies/{user_name}.pkl'.format(user_name=self.user_name)):
+        if not os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
             self.save_cookies()
 
         # 2. run open_phantomjs, create the process of phantomjs
-        self.phantomjs_max = 1
+        # self.phantomjs_max = 1
         self.open_phantomjs()
         print("phantomjs num is ", self.q_phantomjs.qsize())
 
@@ -251,19 +255,6 @@ class conphantomjs:
         self.close_phantomjs()
         print("phantomjs num is ", self.q_phantomjs.qsize())
 
-# https://lgn.yy.com/lgn/oauth/authorize.do?oauth_token=b7e2debe51603ff22075819a5ca17e828810b7de69530da6d59a35a5cb78b5139b85cd08af12b31ec50608b67fa24628&denyCallbackURL=&regCallbackURL=https://www.huya.com/udb_web/udbport2.php?do=callback&UIStyle=xelogin&rdm=0.14674353878945112
-
-    # def is_login(self, driver, room_url):
-    #     # login_name = driver.find_element_by_xpath("//*[@id='login-username']").text
-    #     # print(response.xpath('//span[@id="login-username"]/@title').extract()[0])
-    #     if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "": #//*[@id="login-username"]
-    #         print('Need to login')
-            # self.login()
-            # self.save_cookie()
-        # else:
-        #     print("NO need to login")
-        # driver.get(room_url)
-        # self.send_advertisement(driver)
 
 
     def send_msg(self, driver, msg):
@@ -278,9 +269,8 @@ class conphantomjs:
         print('Message 1 sent!')
 
 
-
 if __name__ == "__main__":
-    cur = conphantomjs('13250219510', '81302137hy')
+    cur = conphantomjs('13250219510', '81302137hy', '6666')
     cur.main()
 
     # with open('{user_name}.json'.format(user_name=__username), 'r', encoding='utf-8') as f:
@@ -355,3 +345,17 @@ if __name__ == "__main__":
     #     i.join()
     # cur.close_phantomjs()
     # print("phantomjs num is ", cur.q_phantomjs.qsize())
+
+    # https://lgn.yy.com/lgn/oauth/authorize.do?oauth_token=b7e2debe51603ff22075819a5ca17e828810b7de69530da6d59a35a5cb78b5139b85cd08af12b31ec50608b67fa24628&denyCallbackURL=&regCallbackURL=https://www.huya.com/udb_web/udbport2.php?do=callback&UIStyle=xelogin&rdm=0.14674353878945112
+
+    # def is_login(self, driver, room_url):
+    #     # login_name = driver.find_element_by_xpath("//*[@id='login-username']").text
+    #     # print(response.xpath('//span[@id="login-username"]/@title').extract()[0])
+    #     if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "": #//*[@id="login-username"]
+    #         print('Need to login')
+    # self.login()
+    # self.save_cookie()
+    # else:
+    #     print("NO need to login")
+    # driver.get(room_url)
+    # self.send_advertisement(driver)
