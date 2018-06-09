@@ -1,14 +1,11 @@
-# -*- coding: utf-8 -*-
 import sys
 sys.path.append('..')
-from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.selector import Selector
 from huya.items import HuyaItem
-import json, pickle
+import json, pickle, os
 from scrapy.http import Request, HtmlResponse
-# from huya.spiders.admin_excel import AdminWorkbook
-import websocket, _thread, time
+from selenium import webdriver
 
 
 class HuyaSpider(CrawlSpider):
@@ -16,12 +13,25 @@ class HuyaSpider(CrawlSpider):
     name = 'huya'
     total_rooms = 0
     no = 2
-    # file_path = 'G:\Program\Projects\Live_Sipder\huya.xlsx'
-    # workbook = AdminWorkbook(file_path)
     allowed_domains = ["huya.com"]
     base_url = 'https://www.huya.com/g/'
     start_urls = ['https://www.huya.com/g/']
     room_base_url = 'https://www.huya.com/'
+
+    def __init__(self, *a, **kw):
+        super().__init__(*a, **kw)
+        self.a = a
+        # chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
+        # os.environ["webdriver.chrome.driver"] = chromedriver
+        # option = webdriver.ChromeOptions()
+        # self.driver = webdriver.Chrome(chromedriver, chrome_options=option)
+        service_args = []
+        # service_args.append('--load-image=no')
+        service_args.append('--disk-cache=yes')
+        service_args.append('--ignore-ssl-errors=true')
+        self.driver = webdriver.PhantomJS(service_args=service_args)
+        self.driver.maximize_window()
+
 
     def start_requests(self):
         for url in self.start_urls:
@@ -29,18 +39,20 @@ class HuyaSpider(CrawlSpider):
 
     def parse(self, response):
         self.logger.info("METHOD - parse, visited by %s", response.url)
-        all_topics = response.xpath('//ul[@class="game-list clearfix"]/li')
-        json = self.load_json()
-        # topic = self.workbook.read_cell('登录', 'C%d' % self.no)
-        topic = json.get('topic')
-        self.logger.info('Topic: ' + topic)
+        # print(response.body.decode())
+        all_topics = response.xpath('//li[@class="game-list-item"]')
+        print('Number of togics:' + str(len(all_topics)))
+        # json = self.load_json()
+        topic = '绝地求生' #json.get('topic')
+
         for each_topic in all_topics:
             if topic == each_topic.xpath('./a/img/@title').extract()[0]:
+                self.logger.info('Topic: ' + topic)
                 gid = each_topic.xpath('./@gid').extract()[0]
-                topic_href = each_topic.xpath('./a/@href').extract()[0]
                 self.logger.info('ID: ' + gid)
+                topic_href = each_topic.xpath('./a/@href').extract()[0]
                 self.logger.info("URL of the topic: " + topic_href)
-                yield Request(topic_href, callback=self.page, meta={'gid': gid})
+                yield Request(topic_href, callback=self.page, meta={'gid': gid, "cookiejar": 123})
 
     def page(self, response):
         self.logger.info("METHOD - page, visited by %s", response.url)
@@ -49,7 +61,7 @@ class HuyaSpider(CrawlSpider):
 
         for p in range(1, int(total_pages) + 1):
             url = self.topic_url_by_page(response.meta['gid'], p)
-            yield Request(url, callback=self.get_room_url)
+            yield Request(url, callback=self.get_room_url, meta={"cookiejar": 123})
 
     def topic_url_by_page(self, gid, page):
         return 'https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId={gid}&tagAll=0&page={page}'.format(
@@ -58,21 +70,20 @@ class HuyaSpider(CrawlSpider):
     def get_room_url(self, response):
         self.logger.info("METHOD - get_topic_url, visited by %s", response.url)
         items = HuyaItem()
-        body = response.body
-        body_str = body.decode()
-        body_json = json.loads(body_str)
+        body = response.xpath('//body/text()').extract()[0]
+        body_json = json.loads(body)
         total_rooms_by_page = len(body_json['data']['datas'])
-        self.total_rooms += total_rooms_by_page
+        self.total_rooms += int(total_rooms_by_page)
         for room in range(0, total_rooms_by_page):
             room_id = body_json['data']['datas'][room]['profileRoom']
+            items['_id'] = room
             items['room'] = room_id
-            items['room_url'] = self.room_base_url + room_id
-            time.sleep(2)
+            items['status'] = 'p'
             yield items
         self.logger.info('Total rooms: ' + str(self.total_rooms))
 
-    def load_json(self):
-        return pickle.load(open("./json/temp.pkl", "rb"))
+    # def load_json(self):
+    #     return pickle.load(open("./json/temp.pkl", "rb"))
 
 
 
@@ -118,16 +129,3 @@ class HuyaSpider(CrawlSpider):
     #     print(item['room'])
 
 
-        # self.workbook.load_workbook()
-        # movies = response.xpath('//ul[@class="game-list clearfix"]/li')
-        # i = 1
-        # for each_movie in movies:
-        #     item = HuyaItem()
-        #     item['topic'] = each_movie.xpath('./a/img/@title').extract()[0]
-        #     item['href'] = each_movie.xpath('./a/@href').extract()[0]
-        #     print(item['topic'])
-        #     self.workbook.write_cell('主题列表', 'A%d' % i, item['topic'])
-        #     self.workbook.write_cell('主题列表', 'B%d' % i, item['href'])
-        #     i = i + 1
-        #     yield item
-        #     self.workbook.save_workbook()

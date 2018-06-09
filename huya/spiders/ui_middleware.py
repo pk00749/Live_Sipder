@@ -2,10 +2,14 @@ from PyQt5.QtWidgets import QMainWindow
 from huya.ui.main import Ui_MainWindow
 from huya.spiders.huya_main import start_huya_spider
 import pickle, time, os
+from logging import getLogger
 
 class LiveSpiderWindow(QMainWindow, Ui_MainWindow):
-    print("ui_middleware")
+
     def __init__(self):
+        print("ui_middleware init...")
+        self.logger = getLogger(__name__)
+        self.logger.info('ui_middleware init...')
         super(LiveSpiderWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)

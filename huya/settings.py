@@ -44,7 +44,7 @@ COOKIES_DEBUG = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -69,7 +69,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'huya.middlewares.MyCustomDownloaderMiddleware': 543,
-   # 'scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware': 700
+   'scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware': 700
 }
 
 # Enable or disable extensions
@@ -80,9 +80,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'huya.pipelines.HuyaPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#    'huya.pipelines.HuyaPipeline': 300,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -106,3 +106,10 @@ HTTPCACHE_IGNORE_HTTP_CODES = []
 HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_LEVEL = 'INFO'
+
+# Mongodb Configuration
+MONGODB_HOST = '127.0.0.1'
+MONGODB_PORT =  27017
+MONGODB_DB_NAME = 'huya'
+MONGODB_USER_NAME = None
+MONGODB_PASSWORD = None
