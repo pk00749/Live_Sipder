@@ -1,10 +1,10 @@
 import threading, queue, time, os, pickle, sys, pymongo
 from selenium import webdriver
-# from logging import getLogger
 import logging
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from huya.spiders.config import USER_PROFILE
 
 MONGODB_CONFIG = {
     'host': '127.0.0.1',
@@ -36,9 +36,12 @@ class conphantomjs:
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
         self.q_phantomjs = queue.Queue()  # 存放phantomjs进程队列
-        self.user_name = name
-        self.password = password
-        self.msg = msg
+
+        user_profile = USER_PROFILE(name)
+        self.user_info = user_profile.get_user_profile()
+        self.user_name = self.user_info['user_name']
+        self.user_pw = self.user_info['user_pw']
+        self.msg = self.user_info['msg']
 
     def login(self, driver):
         self.logger.info('logging, user name: %s' % self.user_name)
@@ -51,7 +54,7 @@ class conphantomjs:
         ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
         ele.send_keys(self.user_name)
         ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
-        ele.send_keys(self.password)
+        ele.send_keys(self.user_pw)
 
         time.sleep(0.5)
         driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
