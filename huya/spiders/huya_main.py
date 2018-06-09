@@ -7,3 +7,6 @@ def start_huya_spider():
     process = CrawlerProcess(get_project_settings())
     process.crawl(HuyaSpider)
     process.start()
+
+
+start_huya_spider()

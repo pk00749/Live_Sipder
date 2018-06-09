@@ -7,19 +7,24 @@ import os
 import pickle
 from module.admin_excel import AdminWorkbook
 from module.get_rooms import GetRooms
+import logging, json
 
 
 class Spider:
 
-    def __init__(self, file, username, password, no, browser):
+    def __init__(self, username, password, no, browser):
         self.driver = self.start_chrome(browser)
         self.username = username
         self.password = password
-        self.workbook = AdminWorkbook(file)
+        # self.workbook = AdminWorkbook(file)
         self.topic = ''
         self.no = no
+        self.logger = logging.getLogger()
+        self.total_rooms = 0
+        self.room_base_url = 'https://www.huya.com/'
 
     def start_chrome(self, browser):
+        print("start_chrome")
         if browser == '-ch':
             chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
             os.environ["webdriver.chrome.driver"] = chromedriver
@@ -29,7 +34,7 @@ class Spider:
 
             driver = webdriver.Chrome(chromedriver, chrome_options=option)
         else:
-            driver = webdriver.PhantomJS()
+            driver = webdriver.PhantomJS(service_args=['--disk-cache=yes'])
             driver.maximize_window()
         driver.implicitly_wait(30)  # 隐式等待
         return driver
@@ -98,27 +103,73 @@ class Spider:
         time.sleep(2)
 
     def send_advertisement(self):
-        send_frequence = self.workbook.read_cell('设置', 'A2')
-        if self.workbook.read_cell('登录', 'D%d' % self.no):
-            msg_1 = self.workbook.read_cell('登录', 'D%d' % self.no)
-            self.send_msg(msg_1)
-            time.sleep(send_frequence)
-            print('Message 1 sent!')
-            if self.workbook.read_cell('登录', 'E%d' % self.no):
-                msg_2 = self.workbook.read_cell('登录', 'E%d' % self.no)
-                self.send_msg(msg_2)
-                print('Message 2 sent!')
+        # send_frequence = self.workbook.read_cell('设置', 'A2')
+        # if self.workbook.read_cell('登录', 'D%d' % self.no):
+        #     msg_1 = self.workbook.read_cell('登录', 'D%d' % self.no)
+        self.send_msg('666')
+            # time.sleep(send_frequence)
+        print('Message 1 sent!')
+            # if self.workbook.read_cell('登录', 'E%d' % self.no):
+            #     msg_2 = self.workbook.read_cell('登录', 'E%d' % self.no)
+            #     self.send_msg(msg_2)
+            #     print('Message 2 sent!')
 
     def close_driver(self):
         self.driver.close()
 
-    def main(self, no):
-        topic = self.workbook.read_cell('登录', 'C%d' % no)
-        total_url = self.workbook.get_max_row(topic)
-        for u in range(1, total_url):
-            url = self.workbook.read_cell(topic, 'B%d' % u)
-            print(url)
-            self.driver.get(url)
+
+    def get_topic_url(self):
+        print('get_topic_url')
+        topic = '绝地求生' # self.workbook.read_cell('登录', 'C%d' % self.no)
+        self.driver.get('https://www.huya.com/g/')
+        all_topics = self.driver.find_elements_by_xpath('//ul[@class="game-list clearfix"]/li')
+        print(all_topics)
+        self.logger.info('Topic: ' + topic)
+        for each_topic in all_topics:
+            if topic == each_topic.find_element_by_xpath('./a/img/@title').text:
+                gid = each_topic.find_element_by_xpath('./@gid').extract()[0]
+                topic_href = each_topic.find_element_by_xpath('./a/@href').extract()[0]
+                self.logger.info('ID: ' + gid)
+                self.logger.info("URL of the topic: " + topic_href)
+                return gid, topic_href
+
+    def get_page(self, topic_url):
+        print('get_page')
+        self.logger.info("METHOD - page, visited by %s", topic_url)
+        self.driver.get(topic_url)
+        total_pages = self.driver.find_elements_by_xpath('//div[@class="list-page"]/@data-pages').extract()[0]
+        self.logger.info("Total pages of the topic: " + total_pages)
+        return total_pages
+
+    def topic_url_by_page(self, gid, page):
+        return 'https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId={gid}&tagAll=0&page={page}'.format(
+            gid=gid, page=page)
+
+    def get_rooms(self, url):
+
+        print('get_rooms')
+        self.logger.info("METHOD - get_topic_url, visited by %s", url)
+        self.driver.get(url)
+        body = self.driver.page_source
+        body_str = body.decode()
+        body_json = json.loads(body_str)
+        total_rooms_by_page = len(body_json['data']['datas'])
+        self.total_rooms += total_rooms_by_page
+        for room in range(0, total_rooms_by_page):
+            room_id = body_json['data']['datas'][room]['profileRoom']
+            room_url = self.room_base_url + room_id
+            time.sleep(2)
+            yield room_url
+        self.logger.info('Total rooms: ' + str(self.total_rooms))
+
+    def main(self):
+        print('main')
+        gid, url = self.get_topic_url()
+        total_pages = self.get_page(url)
+        for p in range(1, int(total_pages) + 1):
+            url = self.topic_url_by_page(gid, p)
+            self.get_rooms(url)
+
             time.sleep(3)
 
             if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "":
@@ -131,28 +182,12 @@ class Spider:
                 self.send_advertisement()
 
 
-def huya_spider(file, browser):
-    workbook = AdminWorkbook(file)
-    workbook.load_workbook()
-    room_list = GetRooms(file)
-
-    for i in range(1, workbook.get_max_row('登录') + 1):
-        no = i + 1
-        # room_list.get_all_rooms_list(no)
-        username = workbook.read_cell('登录', 'A%d' % no)
-        if username:
-            password = workbook.read_cell('登录', 'B%d' % no)
-            if password:
-                spider = Spider(file, username, password, no, browser)
-                spider.main(no)
-                spider.close_driver()
-            else:
-                print("No Password!!!")
-        else:
-            print("No User Name!!!")
-
+def huya_spider(browser):
+    spider = Spider('13250219510', '81302137hy', 2, browser)
+    spider.main()
+    spider.close_driver()
 
 if __name__ == '__main__':
-    huya_spider('../huya.xlsx','hl')
+    huya_spider('hl')
     # t = Spider('../huya.xlsx','13250219510','81302137hy',1)
     # print(t.main())
