@@ -1,6 +1,7 @@
 import threading, queue, time, os, pickle, sys, pymongo
 from selenium import webdriver
-from logging import getLogger
+# from logging import getLogger
+import logging
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -16,6 +17,11 @@ MONGODB_CONFIG = {
 HOME_PAGE = 'https://www.huya.com/g'
 BASE_URL_FOR_ROOM = 'https://www.huya.com/'
 
+logging.basicConfig(level=logging.DEBUG,
+                    filename='../log/in_room.log',
+                    datefmt='%Y/%m/%d %H:%M:%S',
+                    format='%%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(module)s - %(message)s')
+
 class conphantomjs:
     jiange = 0.00001  ##开启phantomjs间隔
     timeout = 20  ##设置phantomjs超时时间
@@ -23,14 +29,14 @@ class conphantomjs:
     # service_args = ['--load-images=no', '--disk-cache=yes']  ##参数设置
 
     def __init__(self, name, password):
-        self.logger = getLogger(__name__)
+        self.logger = logging.getLogger(__name__)
+        self.logger.info('Initialing...')
         self.phantomjs_max = 5  ##同时开启phantomjs个数
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
         self.q_phantomjs = queue.Queue()  ##存放phantomjs进程队列
         self.user_name = name
         self.password = password
-        print(sys.argv[0])
 
     def login(self, driver):
         self.logger.info('logging...')
@@ -39,9 +45,9 @@ class conphantomjs:
         WebDriverWait(driver, 10).until(
             EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//*[@id='udbsdk_frm_normal']")))
         time.sleep(0.5)
+
         ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
         ele.send_keys(self.user_name)
-
         ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
         ele.send_keys(self.password)
 
@@ -50,19 +56,15 @@ class conphantomjs:
 
         time.sleep(0.5)
 
-    def saveCookies(self, driver, name):
-        self.logger.info('saving cookies...')
-        pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=name), "wb"))
-
     def load_cookie(self, n, name):
-        self.logger.info('loading cookies...')
+        self.logger.info('loading cookies, user name: %s' % name)
         for i in range(1, len(n)):
             if n[i]['name'] == name:
                 print(n[i]['value'])
                 return n[i]['value']
 
     def addCookiesWithURL(self, browser, name):
-        print('adding cookies...')
+        print('adding cookies, user name: %s' % name)
         try:
             with open('../cookies/{user_name}.pkl'.format(user_name=name), 'rb')as fp:
                 n = pickle.load(fp)
@@ -133,8 +135,9 @@ class conphantomjs:
                 # browser.add_cookie({'name': 'h_unt', 'value': load_cookie(n, 'h_unt')})  #
         except EOFError:  # 捕获异常EOFError 后返回None
             print('EOFError')
+            self.logger.error('Fail to get cookies', exc_info=True)
 
-    def access(self):
+    def save_cookies(self):
         chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
         os.environ["webdriver.chrome.driver"] = chromedriver
         option = webdriver.ChromeOptions()
@@ -143,9 +146,10 @@ class conphantomjs:
         driver.maximize_window()
         driver.get(HOME_PAGE)
         self.login(driver)
-        self.saveCookies(driver, self.user_name)
+        self.logger.info('saving cookies...')
+        pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=self.user_name), "wb"))
 
-    def accessWithCookie(self, driver, url):
+    def access_with_cookies(self, driver, url):
         driver.maximize_window()
         driver.get(url)
         time.sleep(0.5)
@@ -153,7 +157,7 @@ class conphantomjs:
         time.sleep(0.5)
         driver.refresh()
 
-        self.saveCookies(driver, self.user_name)
+        # self.save_cookies(driver, self.user_name)
 
     def getbody(self, url):
         '''利用phantomjs获取网站源码以及url'''
@@ -163,9 +167,9 @@ class conphantomjs:
         try:
             if os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
                 self.logger.info('cookie found...')
-                self.accessWithCookie(d, url)
-            time.sleep(1)
-        except:
+                self.access_with_cookies(d, url)
+            time.sleep(0.5)
+        except Exception:
             print("Phantomjs Open url Error")
 
         self.send_msg(d, '666')
@@ -220,7 +224,7 @@ class conphantomjs:
     def main(self):
         # 1. check cookies exist or not. if not, give cookies
         if not os.path.exists('./cookies/{user_name}.pkl'.format(user_name=self.user_name)):
-            self.access()
+            self.save_cookies()
 
         # 2. run open_phantomjs, create the process of phantomjs
         self.phantomjs_max = 1
