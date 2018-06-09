@@ -1,8 +1,5 @@
-import queue
+import threading, queue, time, os, pickle, sys, pymongo
 from selenium import webdriver
-import threading
-import time, json, os, pickle
-import pymongo
 from logging import getLogger
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -16,41 +13,46 @@ MONGODB_CONFIG = {
     'password': None
 }
 
+HOME_PAGE = 'https://www.huya.com/g'
+BASE_URL_FOR_ROOM = 'https://www.huya.com/'
+
 class conphantomjs:
     jiange = 0.00001  ##开启phantomjs间隔
     timeout = 20  ##设置phantomjs超时时间
     # path = "D:\python27\Scripts\phantomjs.exe"  ##phantomjs路径
     # service_args = ['--load-images=no', '--disk-cache=yes']  ##参数设置
 
-    def __init__(self, name):
+    def __init__(self, name, password):
         self.logger = getLogger(__name__)
         self.phantomjs_max = 5  ##同时开启phantomjs个数
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
         self.q_phantomjs = queue.Queue()  ##存放phantomjs进程队列
         self.user_name = name
+        self.password = password
+        print(sys.argv[0])
 
-    def login(self, d):
+    def login(self, driver):
         self.logger.info('logging...')
         # popup = browser.switch_to_frame('udb_exchange3lgn')
-        WebDriverWait(d, 10).until(EC.element_to_be_clickable((By.ID, 'nav-login'))).click()
-        WebDriverWait(d, 10).until(
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'nav-login'))).click()
+        WebDriverWait(driver, 10).until(
             EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//*[@id='udbsdk_frm_normal']")))
-        time.sleep(1)
-        ele = d.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
-        ele.send_keys('13250219510')
+        time.sleep(0.5)
+        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
+        ele.send_keys(self.user_name)
 
-        ele = d.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
-        ele.send_keys('81302137hy')
-
-        time.sleep(1)
-        d.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
+        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
+        ele.send_keys(self.password)
 
         time.sleep(1)
+        driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
+
+        time.sleep(0.5)
 
     def saveCookies(self, driver, name):
         self.logger.info('saving cookies...')
-        pickle.dump(driver.get_cookies(), open("{user_name}.pkl".format(user_name=name), "wb"))
+        pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=name), "wb"))
 
     def load_cookie(self, n, name):
         self.logger.info('loading cookies...')
@@ -62,7 +64,7 @@ class conphantomjs:
     def addCookiesWithURL(self, browser, name):
         print('adding cookies...')
         try:
-            with open('{user_name}.pkl'.format(user_name=name), 'rb')as fp:
+            with open('../cookies/{user_name}.pkl'.format(user_name=name), 'rb')as fp:
                 n = pickle.load(fp)
                 # browser.add_cookie({'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f',
                 #                     'value': self.load_cookie(n, 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f')})  #
@@ -139,7 +141,7 @@ class conphantomjs:
         # option.add_argument('headless') # can't use
         driver = webdriver.Chrome(chromedriver, chrome_options=option)
         driver.maximize_window()
-        driver.get("https://www.huya.com/g")
+        driver.get(HOME_PAGE)
         self.login(driver)
         self.saveCookies(driver, self.user_name)
 
@@ -156,9 +158,10 @@ class conphantomjs:
     def getbody(self, url):
         '''利用phantomjs获取网站源码以及url'''
         d = self.q_phantomjs.get()
-        print(d)
+        print('room: ' + url)
+        print('driver id: ' + str(d))
         try:
-            if os.path.exists('{user_name}.pkl'.format(user_name=self.user_name)):
+            if os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
                 self.logger.info('cookie found...')
                 self.accessWithCookie(d, url)
             time.sleep(1)
@@ -166,9 +169,8 @@ class conphantomjs:
             print("Phantomjs Open url Error")
 
         self.send_msg(d, '666')
-        url = d.current_url
         self.q_phantomjs.put(d)
-        print(url)
+
 
     def open_phantomjs(self):
         '''多线程开启phantomjs进程'''
@@ -203,7 +205,6 @@ class conphantomjs:
     def close_phantomjs(self):
         '''多线程关闭phantomjs对象'''
         th = []
-
         def close_threading():
             d = self.q_phantomjs.get()
             d.quit()
@@ -218,7 +219,7 @@ class conphantomjs:
 
     def main(self):
         # 1. check cookies exist or not. if not, give cookies
-        if not os.path.exists('{user_name}.pkl'.format(user_name=self.user_name)):
+        if not os.path.exists('./cookies/{user_name}.pkl'.format(user_name=self.user_name)):
             self.access()
 
         # 2. run open_phantomjs, create the process of phantomjs
@@ -229,16 +230,12 @@ class conphantomjs:
         urls = []
         count = self.db['rooms'].count()
         for e in range(0, count // 10 + 1):
-            # print('---------------%d' % e)
             res = self.db['rooms'].find({'_id': {'$gte': 10 * e, '$lt': 10 * (e + 1)}})
             for k in res:
                 urls.append(k['room'])
-            # print(urls)
-            # print('---------------')
-            # urls = ["http://www.baidu.com"] * 50
             th = []
             for i in urls:
-                i = 'https://www.huya.com/' + i
+                i = BASE_URL_FOR_ROOM + i
                 t = threading.Thread(target=cur.getbody, args=(i,))
                 th.append(t)
             for i in th:
@@ -273,13 +270,13 @@ class conphantomjs:
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
         # d.find_element_by_xpath("//*[@id='msg_send_bt']").click()
         # self.driver.find_element_by_id('msg_send_bt').click()
-        time.sleep(1)
+        time.sleep(0.5)
         print('Message 1 sent!')
 
 
 
 if __name__ == "__main__":
-    cur = conphantomjs('13250219510')
+    cur = conphantomjs('13250219510', '81302137hy')
     cur.main()
 
     # with open('{user_name}.json'.format(user_name=__username), 'r', encoding='utf-8') as f:
