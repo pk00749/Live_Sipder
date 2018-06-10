@@ -4,7 +4,7 @@ import logging
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from huya.spiders.config import USER_PROFILE
+from huya.spiders.config import USER_PROFILE, HUYA_CONFIG
 
 MONGODB_CONFIG = {
     'host': '127.0.0.1',
@@ -16,7 +16,6 @@ MONGODB_CONFIG = {
 
 HOME_PAGE = 'https://www.huya.com/g'
 BASE_URL_FOR_ROOM = 'https://www.huya.com/'
-PHANTOMJS_MAX = 1
 
 logging.basicConfig(level=logging.INFO,
                     filename='../log/in_room.log',
@@ -29,10 +28,15 @@ class conphantomjs:
     # path = "D:\python27\Scripts\phantomjs.exe"  ##phantomjs路径
     # service_args = ['--load-images=no', '--disk-cache=yes']  ##参数设置
 
-    def __init__(self, name, password, msg):
+    def __init__(self, name):
         self.logger = logging.getLogger(__name__)
         self.logger.info('Initialing...')
-        self.phantomjs_max = PHANTOMJS_MAX  # 同时开启phantomjs个数
+        huya_config = HUYA_CONFIG()
+        self.huya_config = huya_config.get_huya_config()
+        self.interval_time = self.huya_config['interval_time'] # 开启phantomjs间隔
+        self.phantomjs_max = self.huya_config['phantomjs'] # 同时开启phantomjs个数
+        self.phantomjs_timeout = self.huya_config['phantomjs_timeout'] # 设置phantomjs超时时间
+
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
         self.q_phantomjs = queue.Queue()  # 存放phantomjs进程队列
@@ -42,6 +46,7 @@ class conphantomjs:
         self.user_name = self.user_info['user_name']
         self.user_pw = self.user_info['user_pw']
         self.msg = self.user_info['msg']
+
 
     def login(self, driver):
         self.logger.info('logging, user name: %s' % self.user_name)
@@ -158,9 +163,9 @@ class conphantomjs:
         self.logger.info('opening url: %s' % url)
         driver.maximize_window()
         driver.get(url)
-        time.sleep(0.5)
+        # time.sleep(0.5)
         self.set_cookies(driver, self.user_name)
-        time.sleep(0.5)
+        time.sleep(0.3)
         driver.refresh()
 
     def getbody(self, url):
@@ -199,16 +204,16 @@ class conphantomjs:
             option = webdriver.ChromeOptions()
             # option.add_argument('headless') # can't use
             d = webdriver.Chrome(chromedriver, chrome_options=option)
-
+            d.implicitly_wait(self.phantomjs_timeout)  # 设置超时时间
             self.q_phantomjs.put(d)  # 将phantomjs进程存入队列
 
         th = []
-        for i in range(self.phantomjs_max):
+        for i in range(int(self.phantomjs_max)):
             t = threading.Thread(target=open_threading)
             th.append(t)
         for i in th:
             i.start()
-            time.sleep(conphantomjs.jiange)  # 设置开启的时间间隔
+            time.sleep(float(self.interval_time)) # conphantomjs.jiange)  # 设置开启的时间间隔
         for i in th:
             i.join()
 
@@ -234,7 +239,6 @@ class conphantomjs:
             self.save_cookies()
 
         # 2. run open_phantomjs, create the process of phantomjs
-        # self.phantomjs_max = 1
         self.open_phantomjs()
         print("phantomjs num is ", self.q_phantomjs.qsize())
 
@@ -273,7 +277,7 @@ class conphantomjs:
 
 
 if __name__ == "__main__":
-    cur = conphantomjs('13250219510', '81302137hy', '6666')
+    cur = conphantomjs('13250219510')
     cur.main()
 
     # with open('{user_name}.json'.format(user_name=__username), 'r', encoding='utf-8') as f:

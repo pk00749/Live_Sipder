@@ -13,8 +13,3 @@ class HuyaItem(scrapy.Item):
     _id = scrapy.Field()
     room = scrapy.Field()
     status = scrapy.Field()
-    # room_url = scrapy.Field()
-
-    # name = scrapy.Field()
-    # topic = scrapy.Field()
-    # topic_url = scrapy.Field()

@@ -1,0 +1,629 @@
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/window/current/maximize {"windowHandle": "current", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/url {"url": "https://www.huya.com/g", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 42 - in_rooms - logging...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/element {"using": "id", "value": "nav-login", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/element/0.23422383164411564-1/displayed {"id": "0.23422383164411564-1", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/element/0.23422383164411564-1/enabled {"id": "0.23422383164411564-1", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/element/0.23422383164411564-1/click {"id": "0.23422383164411564-1", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/element {"using": "xpath", "value": "//*[@id='udbsdk_frm_normal']", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/frame {"id": {"ELEMENT": "0.23422383164411564-2", "element-6066-11e4-a52e-4f735466cecf": "0.23422383164411564-2"}, "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:10228/session/0d132a9103a65896c3c2e445fbcb3b83/element {"using": "xpath", "value": "//*[@id='m_commonLogin']/div[1]/span/input", "sessionId": "0d132a9103a65896c3c2e445fbcb3b83"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/window/current/maximize {"windowHandle": "current", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/url {"url": "https://www.huya.com/g", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 42 - in_rooms - logging...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element {"using": "id", "value": "nav-login", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element/0.7904245226133046-1/displayed {"id": "0.7904245226133046-1", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element/0.7904245226133046-1/enabled {"id": "0.7904245226133046-1", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element/0.7904245226133046-1/click {"id": "0.7904245226133046-1", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element {"using": "xpath", "value": "//*[@id='udbsdk_frm_normal']", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/frame {"id": {"ELEMENT": "0.7904245226133046-2", "element-6066-11e4-a52e-4f735466cecf": "0.7904245226133046-2"}, "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element {"using": "xpath", "value": "//*[@id='m_commonLogin']/div[1]/span/input", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11034/session/f0cc4e01f8db42b06736a78a4cb58322/element/0.12845308786172183-1/value {"text": "13250219510", "value": ["1", "3", "2", "5", "0", "2", "1", "9", "5", "1", "0"], "id": "0.12845308786172183-1", "sessionId": "f0cc4e01f8db42b06736a78a4cb58322"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/window/current/maximize {"windowHandle": "current", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/url {"url": "https://www.huya.com/g", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 42 - in_rooms - logging...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element {"using": "id", "value": "nav-login", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element/0.4724551443860283-1/displayed {"id": "0.4724551443860283-1", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element/0.4724551443860283-1/enabled {"id": "0.4724551443860283-1", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element/0.4724551443860283-1/click {"id": "0.4724551443860283-1", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element {"using": "xpath", "value": "//*[@id='udbsdk_frm_normal']", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element {"using": "xpath", "value": "//*[@id='udbsdk_frm_normal']", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/frame {"id": {"ELEMENT": "0.4724551443860283-2", "element-6066-11e4-a52e-4f735466cecf": "0.4724551443860283-2"}, "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element {"using": "xpath", "value": "//*[@id='m_commonLogin']/div[1]/span/input", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element/0.6075509656651934-1/value {"text": "13250219510", "value": ["1", "3", "2", "5", "0", "2", "1", "9", "5", "1", "0"], "id": "0.6075509656651934-1", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element {"using": "xpath", "value": "//*[@id='m_commonLogin']/div[2]/span/input", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element/0.6075509656651934-2/value {"text": "81302137hy", "value": ["8", "1", "3", "0", "2", "1", "3", "7", "h", "y"], "id": "0.6075509656651934-2", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element {"using": "xpath", "value": "//*[@id='m_commonLogin']/div[5]/a[1]", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/element/0.6075509656651934-3/click {"id": "0.6075509656651934-3", "sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 154 - in_rooms - saving cookies...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11280/session/58642b30f652c61fe93cd5e14b8d22c3/cookie {"sessionId": "58642b30f652c61fe93cd5e14b8d22c3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "chromeOptions": {"extensions": [], "args": []}}}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 174 - in_rooms - cookie found...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/window/current/maximize {"windowHandle": "current", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/url {"url": "https://www.huya.com/10875827", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511556"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "h_pr", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_passdata", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "yyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yaoldyyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "username", "value": "2232684128yy"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "password", "value": "3052411AD09E88D82E9D718C350BE0D0EEED51FC"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptokensec", "value": ""}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "osinfo", "value": "5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_l", "value": "DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_n", "value": "4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_c", "value": "AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_oar", "value": "8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511560"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "_yasids", "value": "__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptoken", "value": "899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "PHPSESSID", "value": "un4jcirn926k4ej7819atg4ih5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_tt1", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_new", "value": "C804B110B56000014141B3D3157E1BCB"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yasmid", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/refresh {"sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "xpath", "value": "//*[@id='pub_msg_input']", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6104225704782844-1/value {"text": "666", "value": ["6", "6", "6"], "id": "0.6104225704782844-1", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "id", "value": "msg_send_bt", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6104225704782844-2/displayed {"id": "0.6104225704782844-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6104225704782844-2/enabled {"id": "0.6104225704782844-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6104225704782844-2/click {"id": "0.6104225704782844-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 174 - in_rooms - cookie found...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/window/current/maximize {"windowHandle": "current", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/url {"url": "https://www.huya.com/15665294", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511556"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "h_pr", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_passdata", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "yyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yaoldyyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "username", "value": "2232684128yy"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "password", "value": "3052411AD09E88D82E9D718C350BE0D0EEED51FC"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptokensec", "value": ""}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "osinfo", "value": "5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_l", "value": "DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_n", "value": "4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_c", "value": "AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_oar", "value": "8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511560"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "_yasids", "value": "__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptoken", "value": "899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "PHPSESSID", "value": "un4jcirn926k4ej7819atg4ih5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_tt1", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_new", "value": "C804B110B56000014141B3D3157E1BCB"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yasmid", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/refresh {"sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "xpath", "value": "//*[@id='pub_msg_input']", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6305561842770175-1/value {"text": "666", "value": ["6", "6", "6"], "id": "0.6305561842770175-1", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "id", "value": "msg_send_bt", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6305561842770175-2/displayed {"id": "0.6305561842770175-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6305561842770175-2/enabled {"id": "0.6305561842770175-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6305561842770175-2/click {"id": "0.6305561842770175-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 174 - in_rooms - cookie found...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/window/current/maximize {"windowHandle": "current", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/url {"url": "https://www.huya.com/10796684", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511556"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "h_pr", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_passdata", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "yyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yaoldyyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "username", "value": "2232684128yy"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "password", "value": "3052411AD09E88D82E9D718C350BE0D0EEED51FC"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptokensec", "value": ""}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "osinfo", "value": "5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_l", "value": "DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_n", "value": "4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_c", "value": "AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_oar", "value": "8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511560"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "_yasids", "value": "__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptoken", "value": "899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "PHPSESSID", "value": "un4jcirn926k4ej7819atg4ih5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_tt1", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_new", "value": "C804B110B56000014141B3D3157E1BCB"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yasmid", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/refresh {"sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "xpath", "value": "//*[@id='pub_msg_input']", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.09410568087210858-1/value {"text": "666", "value": ["6", "6", "6"], "id": "0.09410568087210858-1", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "id", "value": "msg_send_bt", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.09410568087210858-2/displayed {"id": "0.09410568087210858-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.09410568087210858-2/enabled {"id": "0.09410568087210858-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.09410568087210858-2/click {"id": "0.09410568087210858-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 174 - in_rooms - cookie found...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/window/current/maximize {"windowHandle": "current", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/url {"url": "https://www.huya.com/10063817", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511556"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "h_pr", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_passdata", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "yyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yaoldyyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "username", "value": "2232684128yy"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "password", "value": "3052411AD09E88D82E9D718C350BE0D0EEED51FC"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptokensec", "value": ""}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "osinfo", "value": "5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_l", "value": "DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_n", "value": "4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_c", "value": "AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_oar", "value": "8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511560"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "_yasids", "value": "__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptoken", "value": "899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "PHPSESSID", "value": "un4jcirn926k4ej7819atg4ih5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_tt1", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_new", "value": "C804B110B56000014141B3D3157E1BCB"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yasmid", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/refresh {"sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "xpath", "value": "//*[@id='pub_msg_input']", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.08356644386951118-1/value {"text": "666", "value": ["6", "6", "6"], "id": "0.08356644386951118-1", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "id", "value": "msg_send_bt", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.08356644386951118-2/displayed {"id": "0.08356644386951118-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.08356644386951118-2/enabled {"id": "0.08356644386951118-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.08356644386951118-2/click {"id": "0.08356644386951118-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 174 - in_rooms - cookie found...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/window/current/maximize {"windowHandle": "current", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/url {"url": "https://www.huya.com/15596877", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511556"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "h_pr", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_passdata", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "yyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yaoldyyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "username", "value": "2232684128yy"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "password", "value": "3052411AD09E88D82E9D718C350BE0D0EEED51FC"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptokensec", "value": ""}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "osinfo", "value": "5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_l", "value": "DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_n", "value": "4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_c", "value": "AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_oar", "value": "8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511560"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "_yasids", "value": "__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptoken", "value": "899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "PHPSESSID", "value": "un4jcirn926k4ej7819atg4ih5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_tt1", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_new", "value": "C804B110B56000014141B3D3157E1BCB"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yasmid", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/refresh {"sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "xpath", "value": "//*[@id='pub_msg_input']", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6745443780148135-1/value {"text": "666", "value": ["6", "6", "6"], "id": "0.6745443780148135-1", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "id", "value": "msg_send_bt", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6745443780148135-2/displayed {"id": "0.6745443780148135-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - GET http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6745443780148135-2/enabled {"id": "0.6745443780148135-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.6745443780148135-2/click {"id": "0.6745443780148135-2", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 174 - in_rooms - cookie found...
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/window/current/maximize {"windowHandle": "current", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/url {"url": "https://www.huya.com/15661999", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511556"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "h_pr", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_passdata", "value": "1"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "yyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yaoldyyuid", "value": "2232479408"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "username", "value": "2232684128yy"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "password", "value": "3052411AD09E88D82E9D718C350BE0D0EEED51FC"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptokensec", "value": ""}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "osinfo", "value": "5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_l", "value": "DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_n", "value": "4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_c", "value": "AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=="}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udb_oar", "value": "8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f", "value": "1528511560"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "_yasids", "value": "__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "udboauthtmptoken", "value": "899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "PHPSESSID", "value": "un4jcirn926k4ej7819atg4ih5"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_tt1", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yamid_new", "value": "C804B110B56000014141B3D3157E1BCB"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/cookie {"cookie": {"name": "__yasmid", "value": "0.20169332498077597"}, "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/refresh {"sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "xpath", "value": "//*[@id='pub_msg_input']", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element/0.17076798896617595-1/value {"text": "666", "value": ["6", "6", "6"], "id": "0.17076798896617595-1", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:11350/session/840ca4263ae582e170a52caf8b5eaabe/element {"using": "id", "value": "msg_send_bt", "sessionId": "840ca4263ae582e170a52caf8b5eaabe"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 44 - in_rooms - logging, user name: 13250219510
+%(asctime)s - __main__ - INFO - 151 - in_rooms - saving cookies, user name: 13250219510
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10875827
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10875827
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15665294
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10796684
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10063817
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15596877
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10875827
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15665294
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10796684
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10063817
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15596877
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15661999
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15638451
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15658371
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15620144
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15145485
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/12061374
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10875827
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/15665294
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10796684
+%(asctime)s - __main__ - INFO - 170 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 155 - in_rooms - opening url: https://www.huya.com/10063817
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 180 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 165 - in_rooms - opening url: https://www.huya.com/10875827
+%(asctime)s - __main__ - INFO - 180 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 165 - in_rooms - opening url: https://www.huya.com/15665294
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 53 - in_rooms - logging, user name: 13250219510
+%(asctime)s - __main__ - INFO - 160 - in_rooms - saving cookies, user name: 13250219510
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/10875827
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/15665294
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/10796684
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/10063817
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/15596877
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/15661999
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 164 - in_rooms - opening url: https://www.huya.com/15638451
+%(asctime)s - scrapy.utils.log - INFO - 144 - log - Scrapy 1.4.0 started (bot: huya)
+%(asctime)s - scrapy.utils.log - INFO - 147 - log - Overridden settings: {'BOT_NAME': 'huya', 'COOKIES_DEBUG': True, 'FEED_FORMAT': 'csv', 'FEED_URI': 'file:G://Program/Projects/Live_Sipder/huya/test.csv', 'HTTPCACHE_ENABLED': True, 'LOG_LEVEL': 'INFO', 'NEWSPIDER_MODULE': 'huya.spiders', 'SPIDER_MODULES': ['huya.spiders']}
+%(asctime)s - scrapy.middleware - INFO - 53 - middleware - Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats']
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:28744/wd/hub/session {"capabilities": {"firstMatch": [], "alwaysMatch": {"browserName": "phantomjs", "version": "", "platform": "ANY", "javascriptEnabled": true}}, "desiredCapabilities": {"browserName": "phantomjs", "version": "", "platform": "ANY", "javascriptEnabled": true}}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 478 - remote_connection - POST http://127.0.0.1:28744/wd/hub/session/fa7faab0-6c7e-11e8-b490-15f93eb515f3/window/current/maximize {"windowHandle": "current", "sessionId": "fa7faab0-6c7e-11e8-b490-15f93eb515f3"}
+%(asctime)s - selenium.webdriver.remote.remote_connection - DEBUG - 565 - remote_connection - Finished Request
+%(asctime)s - py.warnings - WARNING - 99 - warnings - C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\utils\deprecate.py:156: ScrapyDeprecationWarning: `scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware` class is deprecated, use `scrapy.downloadermiddlewares.cookies.CookiesMiddleware` instead
+  ScrapyDeprecationWarning)
+
+%(asctime)s - scrapy.middleware - INFO - 53 - middleware - Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats',
+ 'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware']
+%(asctime)s - scrapy.middleware - INFO - 53 - middleware - Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+%(asctime)s - scrapy.middleware - INFO - 53 - middleware - Enabled item pipelines:
+[]
+%(asctime)s - scrapy.core.engine - INFO - 256 - engine - Spider opened
+%(asctime)s - scrapy.extensions.logstats - INFO - 48 - logstats - Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+%(asctime)s - scrapy.extensions.httpcache - DEBUG - 282 - httpcache - Using filesystem cache storage in G:\Program\Projects\Live_Sipder\huya\.scrapy\httpcache
+%(asctime)s - scrapy.core.engine - DEBUG - 238 - engine - Crawled (200) <GET https://www.huya.com/g/> (referer: None) ['cached']
+%(asctime)s - huya - INFO - 42 - huyaSpider - METHOD - parse, visited by https://www.huya.com/g/
+%(asctime)s - scrapy.core.scraper - ERROR - 158 - scraper - Spider error processing <GET https://www.huya.com/g/> (referer: None)
+Traceback (most recent call last):
+  File "C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\utils\defer.py", line 102, in iter_errback
+    yield next(it)
+  File "C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\spidermiddlewares\offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\spidermiddlewares\referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\spidermiddlewares\urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\spidermiddlewares\depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "G:\Program\Projects\Live_Sipder\huya\spiders\huyaSpider.py", line 44, in parse
+    all_topics = response.xpath('//li[@class="game-list-item"]')
+  File "C:\Users\warcraftyork\Anaconda3\lib\site-packages\scrapy\http\response\__init__.py", line 105, in xpath
+    raise NotSupported("Response content isn't text")
+scrapy.exceptions.NotSupported: Response content isn't text
+%(asctime)s - scrapy.core.engine - INFO - 295 - engine - Closing spider (finished)
+%(asctime)s - scrapy.statscollectors - INFO - 47 - statscollectors - Dumping Scrapy stats:
+{'downloader/request_bytes': 157,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 375484,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 6, 10, 7, 22, 6, 348624),
+ 'httpcache/hit': 1,
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 8,
+ 'log_count/WARNING': 1,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/NotSupported': 1,
+ 'start_time': datetime.datetime(2018, 6, 10, 7, 22, 6, 156613)}
+%(asctime)s - scrapy.core.engine - INFO - 326 - engine - Spider closed (finished)
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 34 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/325323
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/7911
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/908400
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/15532184
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/199300
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/195522
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/14181326
+%(asctime)s - __main__ - INFO - 173 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 158 - in_rooms - opening url: https://www.huya.com/876611
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/325323
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/7911
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 179 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/325323
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/325323
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/7911
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/908400
+%(asctime)s - __main__ - INFO - 33 - in_rooms - Initialing...
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/325323
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/7911
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/908400
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/15532184
+%(asctime)s - __main__ - INFO - 178 - in_rooms - cookie found...
+%(asctime)s - __main__ - INFO - 163 - in_rooms - opening url: https://www.huya.com/199300
