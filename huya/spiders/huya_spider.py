@@ -25,16 +25,17 @@ class HuyaSpiderSpider(CrawlSpider):
         self.logger.info(__name__)
         print(__name__)
         super(HuyaSpiderSpider, self).__init__(*args, **kwargs)
-        # self.user_name = user_name # a.get('user_name') #TODO:
-        self.user_name = kwargs.get('user_name') #TODO:
-        print('Spider initialing, user name: {user_name}'.format(user_name= self.user_name)) # % str(self.user_name))
+        # self.user_name = user_name # a.get('user_name')
+        self.user_info = kwargs.get('user')
+        self.user_name = self.user_info.get('user_name')
+        print('Spider initialing, user name: {user_name}'.format(user_name=self.user_name))  # % str(self.user_name))
         user_profile = USER_PROFILE(self.user_name)
         self.user_info = user_profile.get_user_profile()
         self.topic = self.user_info['topic']
         print(str(self.topic))
 
         self.conn = pymongo.MongoClient(settings['MONGODB_HOST'], settings['MONGODB_PORT'])
-        self.db = self.conn[settings['MONGODB_DB_NAME']]
+        self.db = self.conn[str(settings['MONGODB_DB_NAME'])]
         self.db['rooms'].remove({})
         print(self.db['rooms'].count())
         # ----------------------------
@@ -70,7 +71,8 @@ class HuyaSpiderSpider(CrawlSpider):
                 self.logger.info("URL of the topic: " + topic_href)
                 yield Request(topic_href, callback=self.page, meta={'gid': gid})
 
-    def topic_url_by_page(self, gid, page):
+    @staticmethod
+    def topic_url_by_page(gid, page):
         return 'https://www.huya.com/cache.php?m=LiveList&do=getLiveListByPage&gameId={gid}&tagAll=0&page={page}'.format(
             gid=gid, page=page)
 

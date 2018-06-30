@@ -33,7 +33,10 @@ class HuyaPipeline(object):
 
         if isinstance(item, Item):
             item = dict(item)
-        self.db['rooms'].insert_one(item)
+        try:
+            self.db['rooms'].insert_one(item)
+        except Exception:
+            print('Duplicated key')
 
     def process_item(self, item, spider):
         self.insert_db(item)

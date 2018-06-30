@@ -1,4 +1,4 @@
-import threading, queue, time, os, pickle, sys, pymongo
+import threading, queue, time, os, pickle, pymongo
 from selenium import webdriver
 import logging
 from selenium.webdriver.support.wait import WebDriverWait
@@ -18,7 +18,7 @@ HOME_PAGE = 'https://www.huya.com/g'
 BASE_URL_FOR_ROOM = 'https://www.huya.com/'
 
 logging.basicConfig(level=logging.INFO,
-                    filename='../log/in_room.log',
+                    filename='./huya/log/in_room.log',
                     datefmt='%Y/%m/%d %H:%M:%S',
                     format='%%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(module)s - %(message)s')
 
@@ -33,9 +33,9 @@ class conphantomjs:
         self.logger.info('Initialing...')
         huya_config = HUYA_CONFIG()
         self.huya_config = huya_config.get_huya_config()
-        self.interval_time = self.huya_config['interval_time'] # 开启phantomjs间隔
-        self.phantomjs_max = self.huya_config['phantomjs'] # 同时开启phantomjs个数
-        self.phantomjs_timeout = self.huya_config['phantomjs_timeout'] # 设置phantomjs超时时间
+        self.interval_time = self.huya_config['interval_time']  # 开启phantomjs间隔
+        self.phantomjs_max = self.huya_config['phantomjs']  # 同时开启phantomjs个数
+        self.phantomjs_timeout = self.huya_config['phantomjs_timeout']  # 设置phantomjs超时时间
 
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
@@ -46,7 +46,6 @@ class conphantomjs:
         self.user_name = self.user_info['user_name']
         self.user_pw = self.user_info['user_pw']
         self.msg = self.user_info['msg']
-
 
     def login(self, driver):
         self.logger.info('logging, user name: %s' % self.user_name)
@@ -262,9 +261,8 @@ class conphantomjs:
         self.close_phantomjs()
         print("phantomjs num is ", self.q_phantomjs.qsize())
 
-
-
-    def send_msg(self, driver, msg):
+    @staticmethod
+    def send_msg(driver, msg):
         msg_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
     #     msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
         msg_input.send_keys(msg)
