@@ -21,11 +21,14 @@ class HuyaSpiderSpider(CrawlSpider):
     base_url = 'https://www.huya.com/g/'
     room_base_url = 'https://www.huya.com/'
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):  # user_name
         self.logger.info(__name__)
-        super().__init__()
-        print('Spider initialing, user name: %s' % '13250219510')
-        user_profile = USER_PROFILE('13250219510')
+        print(__name__)
+        super(HuyaSpiderSpider, self).__init__(*args, **kwargs)
+        # self.user_name = user_name # a.get('user_name') #TODO:
+        self.user_name = kwargs.get('user_name') #TODO:
+        print('Spider initialing, user name: {user_name}'.format(user_name= self.user_name)) # % str(self.user_name))
+        user_profile = USER_PROFILE(self.user_name)
         self.user_info = user_profile.get_user_profile()
         self.topic = self.user_info['topic']
         print(str(self.topic))
@@ -88,7 +91,7 @@ class HuyaSpiderSpider(CrawlSpider):
         print('now: ' + str(self.total_rooms))
         for room in range(0, total_rooms_by_page):
             room_id = body_json['data']['datas'][room]['profileRoom']
-            items['_id'] = self.total_rooms + room
+            items['_id'] = room_id
             items['room'] = room_id
             items['status'] = 'p'
             yield items
