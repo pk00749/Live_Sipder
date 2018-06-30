@@ -12,7 +12,7 @@ class USER_PROFILE:
 
     def get_user_profile(self):
         if os.path.exists(self.user_profile):
-            self.cf.read(self.user_profile)
+            self.cf.read(self.user_profile, encoding='utf-8')  # read Chinese
         else:
             print('user profile %s does not exist...' % self.user_name)
             return
