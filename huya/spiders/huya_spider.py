@@ -25,9 +25,9 @@ class HuyaSpiderSpider(CrawlSpider):
         self.logger.info(__name__)
         print(__name__)
         super(HuyaSpiderSpider, self).__init__(*args, **kwargs)
-        # self.user_name = user_name # a.get('user_name')
-        self.user_info = kwargs.get('user')
-        self.user_name = self.user_info.get('user_name')
+        # self.user_info = kwargs.get('user')
+        # self.user_name = self.user_info.get('user_name')
+        self.user_name = '13250219510'#TODO:Testing
         print('Spider initialing, user name: {user_name}'.format(user_name=self.user_name))  # % str(self.user_name))
         user_profile = USER_PROFILE(self.user_name)
         self.user_info = user_profile.get_user_profile()
@@ -36,7 +36,7 @@ class HuyaSpiderSpider(CrawlSpider):
 
         self.conn = pymongo.MongoClient(settings['MONGODB_HOST'], settings['MONGODB_PORT'])
         self.db = self.conn[str(settings['MONGODB_DB_NAME'])]
-        self.db['rooms'].remove({})
+        # self.db['rooms'].remove({})
         print(self.db['rooms'].count())
         # ----------------------------
         # chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
@@ -99,3 +99,4 @@ class HuyaSpiderSpider(CrawlSpider):
             yield items
         self.total_rooms = self.total_rooms + total_rooms_by_page
         self.logger.info('Total rooms: ' + str(self.total_rooms))
+        print('Total rooms: ' + str(self.total_rooms))

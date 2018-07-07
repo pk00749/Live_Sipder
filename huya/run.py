@@ -1,6 +1,6 @@
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
-from huya.spiders.huya_spider import HuyaSpiderSpider
+from spiders.huya_spider import HuyaSpiderSpider
 from huya.spiders.in_rooms import conphantomjs
 import sys
 from scrapy import cmdline

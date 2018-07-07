@@ -18,7 +18,8 @@ HOME_PAGE = 'https://www.huya.com/g'
 BASE_URL_FOR_ROOM = 'https://www.huya.com/'
 
 logging.basicConfig(level=logging.INFO,
-                    filename='./huya/log/in_room.log',
+                    # filename='./huya/log/in_room.log',
+                    filename='../log/in_room.log',
                     datefmt='%Y/%m/%d %H:%M:%S',
                     format='%%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(module)s - %(message)s')
 
@@ -74,6 +75,7 @@ class conphantomjs:
 
     def set_cookies(self, browser, name):
         print('setting cookies, user name: %s' % name)
+        self.logger.info('setting cookies, user name: %s' % name)
         try:
             with open('../cookies/{user_name}.pkl'.format(user_name=name), 'rb')as fp:
                 n = pickle.load(fp)
@@ -182,6 +184,7 @@ class conphantomjs:
             # '//*[@id="login-username"]'
         except Exception:
             print("Phantomjs Open url Error")
+            self.logger.info("Phantomjs Open url Error")
 
         self.send_msg(d, self.msg)
         self.q_phantomjs.put(d)
@@ -243,6 +246,10 @@ class conphantomjs:
 
         urls = []
         count = self.db['rooms'].count()
+        if count == 0:
+            print("no url...")
+            self.logger.info("no urls...")
+            return
         for e in range(0, count // 10 + 1):
             res = self.db['rooms'].find({'_id': {'$gte': 10 * e, '$lt': 10 * (e + 1)}})
             for k in res:
@@ -250,7 +257,7 @@ class conphantomjs:
             th = []
             for i in urls:
                 i = BASE_URL_FOR_ROOM + i
-                t = threading.Thread(target=cur.getbody, args=(i,))
+                t = threading.Thread(target=self.getbody, args=(i,))
                 th.append(t)
             for i in th:
                 i.start()

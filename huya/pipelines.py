@@ -35,6 +35,7 @@ class HuyaPipeline(object):
             item = dict(item)
         try:
             self.db['rooms'].insert_one(item)
+            print('inserted')
         except Exception:
             print('Duplicated key')
 
@@ -44,9 +45,11 @@ class HuyaPipeline(object):
 
 if __name__ == "__main__":
     my_conn = HuyaPipeline()
-    # my_conn.db['rooms'].remove({})
+    my_conn.db['rooms'].remove({})
     print(my_conn.db['rooms'].count())
-    # res = my_conn.db['rooms'].find({})
-    # for k in res:
-    #     print(k)
-
+    # result = my_conn.db['rooms'].find_one({'room': '15606846'})
+    # print(result)
+    # result = my_conn.db['rooms'].find({})
+    # print(result)
+    # for re in result:
+    #     print(re)
