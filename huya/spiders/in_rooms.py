@@ -48,116 +48,127 @@ class conphantomjs:
         self.user_pw = self.user_info['user_pw']
         self.msg = self.user_info['msg']
 
-    def login(self, driver):
-        self.logger.info('logging, user name: %s' % self.user_name)
-        # popup = browser.switch_to_frame('udb_exchange3lgn')
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'nav-login'))).click()
-        WebDriverWait(driver, 10).until(
-            EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//*[@id='udbsdk_frm_normal']")))
-        time.sleep(0.5)
-
-        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
-        ele.send_keys(self.user_name)
-        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
-        ele.send_keys(self.user_pw)
-
-        time.sleep(0.5)
-        driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
-
-        time.sleep(0.5)
-
-    def load_pickle(self, n, name):
+    def load_pickle(self, name):
         self.logger.info('loading pickle...')
-        for i in range(1, len(n)):
-            if n[i]['name'] == name:
-                print(n[i]['value'])
-                return n[i]['value']
-
-    def set_cookies(self, browser, name):
-        print('setting cookies, user name: %s' % name)
-        self.logger.info('setting cookies, user name: %s' % name)
-        try:
-            with open('../cookies/{user_name}.pkl'.format(user_name=name), 'rb')as fp:
+        print('loading pickle... %s' % name)
+        with open('../cookies/{user_name}.pkl'.format(user_name=self.user_name), 'rb')as fp:
+            try:
                 n = pickle.load(fp)
-                # browser.add_cookie({'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f',
-                #                     'value': self.load_cookie(n, 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f')})  #
-                # browser.add_cookie({'name': 'h_pr', 'value': self.load_cookie(n, 'h_pr')})  #
-                # browser.add_cookie({'name': 'udb_passdata', 'value': self.load_cookie(n, 'udb_passdata')})
-                # browser.add_cookie({'name': 'yyuid', 'value': self.load_cookie(n, 'yyuid')})  #
-                # browser.add_cookie({'name': '__yaoldyyuid', 'value': self.load_cookie(n, '__yaoldyyuid')})  #
-                # browser.add_cookie({'name': 'username', 'value': self.load_cookie(n, 'username')})  #
-                # browser.add_cookie({'name': 'password', 'value': self.load_cookie(n, 'password')})  #
-                # browser.add_cookie({'name': 'udboauthtmptokensec', 'value': self.load_cookie(n, 'udboauthtmptokensec')})
-                # browser.add_cookie({'name': 'osinfo', 'value': self.load_cookie(n, 'osinfo')})  #
-                # browser.add_cookie({'name': 'udb_l',
-                #                     # 'value': 'DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=='})
-                #                     'value': self.load_cookie(n, 'udb_l')})
-                # browser.add_cookie({'name': 'udb_n',
-                #                     # 'value': '4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97'})
-                #                     'value': self.load_cookie(n, 'udb_n')})
-                # browser.add_cookie({'name': 'udb_c',
-                #                     # 'value': 'AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=='})
-                #                     'value': self.load_cookie(n, 'udb_c')})
-                # browser.add_cookie({'name': 'udb_oar',
-                #                     # 'value': '8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5'})
-                #                     'value': self.load_cookie(n, 'udb_oar')})
-                # browser.add_cookie({'name': 'Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f',
-                #                     'value': self.load_cookie(n, 'Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f')})  #
-                # browser.add_cookie({'name': '_yasids', 'value': self.load_cookie(n, '_yasids')})  #
-                # browser.add_cookie({'name': 'udboauthtmptoken',
-                #                     # 'value': '899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a'})
-                #                     'value': self.load_cookie(n, 'udboauthtmptoken')})
-                # browser.add_cookie({'name': 'PHPSESSID', 'value': self.load_cookie(n, 'PHPSESSID')})  #
-                # browser.add_cookie({'name': '__yamid_tt1', 'value': self.load_cookie(n, '__yamid_tt1')})  #
-                # browser.add_cookie({'name': '__yamid_new', 'value': self.load_cookie(n, '__yamid_new')})  #
-                # browser.add_cookie({'name': '__yasmid', 'value': self.load_cookie(n, '__yasmid')})  #
-                # browser.add_cookie({'name': 'h_unt', 'value': self.load_cookie(n, 'h_unt')})  #
+            except EOFError:
+                return None
 
-                browser.add_cookie({'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f', 'value': '1528511556'})  #
-                browser.add_cookie({'name': 'h_pr', 'value': '1'})  #
-                browser.add_cookie({'name': 'udb_passdata', 'value': '1'})
-                browser.add_cookie({'name': 'yyuid', 'value': '2232479408'})  #
-                browser.add_cookie({'name': '__yaoldyyuid', 'value': '2232479408'})  #
-                browser.add_cookie({'name': 'username', 'value': '2232684128yy'})  #
-                browser.add_cookie({'name': 'password', 'value': '3052411AD09E88D82E9D718C350BE0D0EEED51FC'})  #
-                browser.add_cookie({'name': 'udboauthtmptokensec', 'value': ''})
-                browser.add_cookie({'name': 'osinfo', 'value': '5DA8C4FC5A761006EC0B212DA59D5686F21BFCD4'})  #
-                browser.add_cookie({'name': 'udb_l',
-                                    'value': 'DAAyMjMyNjg0MTI4eXl-PBtbAnQAkYmSqZyuZg_t9LxMgLv3nP00wp6101IPZpC9rfnmYQVoW5K3OQQOL69sXjX1EGBzQm51qJGolwy8gUmgDKwxIzWFe3hyKT7m_Xs71bPBD7X91iirBqjb2o73iXzrCQ1l2PGLpfbutXNDaDC0FqAlKaV-ljUAAAAAAwAAAAAAAAAMADExMy42NS43MS4zNAQANTIxNg=='})
-                # 'value': load_cookie(n, 'udb_l')})
-                browser.add_cookie({'name': 'udb_n',
-                                    'value': '4ae860d58b80bbdd1172e9aacfe6684c9c8302a673ccdd476faa34342e4353f2fad9c23d3ebb792ebba724367a94ab97'})
-                # 'value': load_cookie(n, 'udb_n')})
-                browser.add_cookie({'name': 'udb_c',
-                                    'value': 'AECPJFBqAAJgADqaaNumrKXZuokRvAcJibvzmARlj2W_ytgnKJ8ma3dlpmhlPaCCgBmOhk6K13qL61dHdMs7qd_2H2pa7EgO8qR1PfR9HE2kXPaEL6tMHFWxClvXcS5ZbX5JLIvV04yOiw=='})
-                # 'value': load_cookie(n, 'udb_c')})
-                browser.add_cookie({'name': 'udb_oar',
-                                    'value': '8FF226293125A2FDEB10694D410C7D895FE29F051908ADDACF1422A84BB36D9932681C2AA49FDB0C6EF11D8068E168C5D823BB7D7466B61FFF3E757E6BB2947AB1BBB4DD8D969467B0DEE410CDD2CE25B885B8263D8FD3E484992B9F5003E01C14A41E30B8E29C95BD72B50269543E89E73DAE963AF14585522A23B37392B65E349039C99625896DBC198045DDE7CE4D26652A21CA69BB07CFFD78522284E577E3BF5463370DFFA8935B97AE67A357A6DDB9BF9885A1037BF3FE284EF1154B80B0AED4771002AFCD8C363DCE7B580CCE6C984888BB2238DA6B13804D404E19FF68DB0FA92CEDEB4970E69005E96CB1A33CC300AD6681852064A96C48E55FF9CF12F68479A3A89064CA082364FBB6D849930BA0E2548D62AA4E38D385A89FB58A62F959F818A207462987AF99FD0617C3BFF85FF6145D61A653DE1466161496C5'})
-                # 'value': load_cookie(n,'udb_oar')})
-                browser.add_cookie({'name': 'Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f', 'value': '1528511560'})  #
-                browser.add_cookie({'name': '_yasids', 'value': '__rootsid%3DC804B111E9C000016C6BB7CD1FA011CF'})  #
-                browser.add_cookie({'name': 'udboauthtmptoken',
-                                    'value': '899b691864c88d8397525861193f70222b816b28ea3b9dc3b39979cac6072382aa703eb5bbcaa5d4bce15fd6c934553a'})
-                # 'value': load_cookie(n, 'udboauthtmptoken')})
-                browser.add_cookie({'name': 'PHPSESSID', 'value': 'un4jcirn926k4ej7819atg4ih5'})  #
-                browser.add_cookie({'name': '__yamid_tt1', 'value': '0.20169332498077597'})  #
-                browser.add_cookie({'name': '__yamid_new', 'value': 'C804B110B56000014141B3D3157E1BCB'})  #
-                browser.add_cookie({'name': '__yasmid', 'value': '0.20169332498077597'})  #
-                # browser.add_cookie({'name': 'h_unt', 'value': load_cookie(n, 'h_unt')})  #
+            for i in range(0, len(n)):
+                if n[i]['name'] == name:
+                    # print(n[i]['value'])
+                    return n[i]['value']
+
+    def set_cookies(self, browser):
+        print('setting cookies, user name: %s' % self.user_name)
+        self.logger.info('setting cookies, user name: %s' % self.user_name)
+        try:
+            browser.add_cookie({'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f',
+                                'value': self.load_pickle('Hm_lvt_51700b6c722f5bb4cf39906a596ea41f')})  #
+            browser.add_cookie({'name': 'h_pr', 'value': '1'})  #
+            browser.add_cookie({'name': 'udb_passdata', 'value': self.load_pickle('udb_passdata')})
+            browser.add_cookie({'name': 'yyuid', 'value': self.load_pickle('yyuid')})  #
+            browser.add_cookie({'name': '__yaoldyyuid', 'value': self.load_pickle('__yaoldyyuid')})  #
+            browser.add_cookie({'name': 'username', 'value': self.load_pickle('username')})  #
+            browser.add_cookie({'name': 'password', 'value': self.load_pickle('password')})  #
+            browser.add_cookie({'name': 'udboauthtmptokensec', 'value': ''})
+            browser.add_cookie({'name': 'osinfo', 'value': self.load_pickle('osinfo')})  #
+            browser.add_cookie({'name': 'udb_l',
+                                'value': self.load_pickle('osinfo')})
+            browser.add_cookie({'name': 'udb_n',
+                                'value': self.load_pickle('udb_n')})
+            browser.add_cookie({'name': 'udb_c',
+                                'value': self.load_pickle('udb_c')})
+            browser.add_cookie({'name': 'udb_oar',
+                                'value': self.load_pickle('udb_oar')})
+            browser.add_cookie({'name': 'Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f',
+                                'value': self.load_pickle('Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f')})  #
+            browser.add_cookie({'name': '_yasids', 'value': self.load_pickle('_yasids')})  #
+            browser.add_cookie({'name': 'udboauthtmptoken',
+                                'value': self.load_pickle('udboauthtmptoken')})
+            browser.add_cookie({'name': 'PHPSESSID', 'value': self.load_pickle('PHPSESSID')})  #
+            browser.add_cookie({'name': '__yamid_tt1', 'value': self.load_pickle('__yamid_tt1')})  #
+            browser.add_cookie({'name': '__yamid_new', 'value': self.load_pickle('__yamid_new')})  #
+            browser.add_cookie({'name': '__yasmid', 'value': self.load_pickle('__yasmid')})  #
+            # print('__yasmid:' + self.load_pickle('__yasmid'))
+
+            # browser.add_cookie({'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f', 'value': '1531028179'})  #
+            # browser.add_cookie({'name': 'h_pr', 'value': '1'})  #
+            # browser.add_cookie({'name': 'udb_passdata', 'value': '1'})
+            # browser.add_cookie({'name': 'yyuid', 'value': '2232479408'})  #
+            # browser.add_cookie({'name': '__yaoldyyuid', 'value': '2232479408'})  #
+            # browser.add_cookie({'name': 'username', 'value': '2232684128yy'})  #
+            # browser.add_cookie({'name': 'password', 'value': 'A9634A21DF0E39C5A66CBB439F50083824BDDAA8'})  #
+            # browser.add_cookie({'name': 'udboauthtmptokensec', 'value': ''})
+            # browser.add_cookie({'name': 'osinfo', 'value': '6FAF261D7FC94FC7846263C27AEF48DAAFC48AB5'})  #
+            # browser.add_cookie({'name': 'udb_l',
+            #                     'value': 'DAAyMjMyNjg0MTI4eXkjo0FbCXQAutSAfXqOdpd2YWU2sau7G4fvxTnMlsAYzMX0VxMwDmQrujgKEH7K7kS42BGtVrXEN1TWjl3ukLgL3FYIRJr-ofsGfQj0Bb_4oTp8aHewX8c6x3eSLfMu5soIYKzyoI3Bx8e-AmbVfHhiOLLAU8R_cQvy7MYAAAAAAwAAAAAAAAANADExMy42NS43MC4xNDEEADUyMTY='})
+            # browser.add_cookie({'name': 'udb_n',
+            #                     'value': '4c51af117380196a141bd2ee9959ee6050666e9c0ce89c244c4b84f935c4f49db47605b825e9dc3dd6e345aee5bb4e34'})
+            # browser.add_cookie({'name': 'udb_c',
+            #                     'value': 'AMCBJFBqAAJgAOHw8IXq2Q9YoW2ezq7V93WDV15YkmTzW-Pub9MCCrwFbpzPhRs6Xvu9x4324wWN0xSy_ikPetIY-Bik78kkOcgHKG5jZvksVQ37k904NW5JJoHeu5XIjpJ94ULjb__EWg=='})
+            # browser.add_cookie({'name': 'udb_oar',
+            #                     'value': '579498B14DC3339CFD8499CB2976D2D704734D2A310E4CF12EA7C39E26D08672D2D3CFCB1FAAF4851FA52491CDEE6E5A7D10066793AE039EAD20CE8653B9135791423C07C1092830196E9363A35CA987CDD0BD3F0FB95AA85D75F0A6F2B7BC3CB005E30F97352189BFCCE51697069F79EBBC4D2A32DF700621710E5D5879322D6AB2A5169EF7A1667750515AE5AD3E3CD19DB56D84823CD2CE6A4FBF5E722162D2D8B2B0C4B25546E86779EFAE3328A8ECE706E0729E71F21EA6022A6791EFDA3E6198378AC1E739A61C3686C0CDED3064BA5BB85C6087539F60465AF76497DF0499DD86D035678FC671116A71BDC5F6EBA3846933BB647E614EE1F8131B1AAF6F039D51C7092CFC1E0B496A2856B286DEEAA3FF271C8769D2DA84F3632160C4B896F232EC809FB959349A0263EB2F016A3C42089C474D9E51A8345788833FC5'})
+            # browser.add_cookie({'name': 'Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f', 'value': '1531028323'})  #
+            # browser.add_cookie({'name': '_yasids', 'value': '__rootsid%3DC80E111C01000001A74710001F6A1A95'})  #
+            # browser.add_cookie({'name': 'udboauthtmptoken',
+            #                     'value': '17da3796d54dbcd5604e5f9d6b967f579d99d77f19cbf230a035cafba28975ff24705436408366aec1984877140969f7c3a272d5f1119a2db5b7dcee611777b3'})
+            # browser.add_cookie({'name': 'PHPSESSID', 'value': 'ir0o747nlljg41gmqjg8j35tu3'})  #
+            # browser.add_cookie({'name': '__yamid_tt1', 'value': '0.5740688303946497'})  #
+            # browser.add_cookie({'name': '__yamid_new', 'value': 'C80E111ABEF000015D7E1980D7D01BCD'})  #
+            # browser.add_cookie({'name': '__yasmid', 'value': '0.5740688303946497'})  #
+            # browser.add_cookie({'name': 'h_unt', 'value': load_cookie(n, 'h_unt')})  # no need
         except EOFError:  # 捕获异常EOFError 后返回None
             print('EOFError')
             self.logger.error('Fail to get cookies', exc_info=True)
 
-    def save_cookies(self):
+    # def save_cookies(self):
+    #     chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
+    #     os.environ["webdriver.chrome.driver"] = chromedriver
+    #     option = webdriver.ChromeOptions()
+        # driver = webdriver.Chrome(chromedriver, chrome_options=option)
+        # driver.maximize_window()
+        # driver.get(HOME_PAGE)
+        # self.login(driver)
+        # self.logger.info('saving cookies, user name: %s' % self.user_name)
+        # print(driver.get_cookies())
+        # pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=self.user_name), "wb"))
+
+    def access(self):
         chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
         os.environ["webdriver.chrome.driver"] = chromedriver
         option = webdriver.ChromeOptions()
-        # option.add_argument('headless') # can't use
         driver = webdriver.Chrome(chromedriver, chrome_options=option)
+
+        # driver = webdriver.PhantomJS()  # service_args=service_args # service_args.append('--load-image=no')
+        # driver.set_page_load_timeout(self.phantomjs_timeout)  ##设置超时时间
+        # driver.implicitly_wait(self.phantomjs_timeout)  # 设置超时时间
+
         driver.maximize_window()
         driver.get(HOME_PAGE)
-        self.login(driver)
+        self._login(driver)
+        self.saveCookies(driver)
+
+    def _login(self, driver):
+        self.logger.info('logging, user name: %s' % self.user_name)
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'nav-login'))).click()
+        WebDriverWait(driver, 10).until(
+            EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//*[@id='udbsdk_frm_normal']")))
+        time.sleep(0.5)
+        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[1]/span/input")
+        ele.send_keys(self.user_name)
+        ele = driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[2]/span/input")
+        ele.send_keys(self.user_pw)
+        time.sleep(0.5)
+        driver.find_element_by_xpath("//*[@id='m_commonLogin']/div[5]/a[1]").click()
+        time.sleep(1)
+
+    def saveCookies(self, driver):
         self.logger.info('saving cookies, user name: %s' % self.user_name)
+        print(driver.get_cookies())
         pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=self.user_name), "wb"))
 
     def open_url_with_cookies(self, driver, url):
@@ -165,7 +176,7 @@ class conphantomjs:
         driver.maximize_window()
         driver.get(url)
         # time.sleep(0.5)
-        self.set_cookies(driver, self.user_name)
+        self.set_cookies(driver)
         time.sleep(0.3)
         driver.refresh()
 
@@ -183,9 +194,8 @@ class conphantomjs:
             # TODO: to judge user name so that no need to set cookie each time
             # '//*[@id="login-username"]'
         except Exception:
-            print("Phantomjs Open url Error")
+            print("163 Phantomjs Open url Error")
             self.logger.info("Phantomjs Open url Error")
-
         self.send_msg(d, self.msg)
         self.q_phantomjs.put(d)
 
@@ -195,18 +205,16 @@ class conphantomjs:
             # service_args = []
             # service_args.append('--disk-cache=yes')
             # service_args.append('--ignore-ssl-errors=true')
-            # driver = webdriver.PhantomJS() # service_args=service_args # service_args.append('--load-image=no')
             # d = webdriver.PhantomJS(service_args=service_args)  # service_args=conphantomjs.service_args
-            # d.implicitly_wait(conphantomjs.timeout)  ##设置超时时间
-            # d.set_page_load_timeout(conphantomjs.timeout)  ##设置超时时间
-            # d.maximize_window()
+            # d = webdriver.PhantomJS() # service_args=service_args # service_args.append('--load-image=no')
+            # d.set_page_load_timeout(self.phantomjs_timeout)  ##设置超时时间
+            # d.implicitly_wait(self.phantomjs_timeout)  # 设置超时时间
 
             chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
             os.environ["webdriver.chrome.driver"] = chromedriver
             option = webdriver.ChromeOptions()
-            # option.add_argument('headless') # can't use
             d = webdriver.Chrome(chromedriver, chrome_options=option)
-            d.implicitly_wait(self.phantomjs_timeout)  # 设置超时时间
+            d.maximize_window()
             self.q_phantomjs.put(d)  # 将phantomjs进程存入队列
 
         th = []
@@ -235,10 +243,23 @@ class conphantomjs:
         for i in th:
             i.join()
 
+    @staticmethod
+    def send_msg(driver, msg):
+        msg_input = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
+        #     msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
+        msg_input.send_keys(msg)
+        # time.sleep(2)
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
+        # d.find_element_by_xpath("//*[@id='msg_send_bt']").click()
+        # self.driver.find_element_by_id('msg_send_bt').click()
+        time.sleep(0.5)
+        print('Message 1 sent!')
+
     def main(self):
         # 1. check cookies exist or not. if not, give cookies
         if not os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
-            self.save_cookies()
+            self.access()
 
         # 2. run open_phantomjs, create the process of phantomjs
         self.open_phantomjs()
@@ -250,10 +271,14 @@ class conphantomjs:
             print("no url...")
             self.logger.info("no urls...")
             return
-        for e in range(0, count // 10 + 1):
-            res = self.db['rooms'].find({'_id': {'$gte': 10 * e, '$lt': 10 * (e + 1)}})
-            for k in res:
-                urls.append(k['room'])
+
+        rooms = self.db['rooms'].find({})
+        no = 0
+        for r in rooms:
+            no += 1
+            if no == 10:
+                urls.append(r['room'])
+                no = 0
             th = []
             for i in urls:
                 i = BASE_URL_FOR_ROOM + i
@@ -268,47 +293,11 @@ class conphantomjs:
         self.close_phantomjs()
         print("phantomjs num is ", self.q_phantomjs.qsize())
 
-    @staticmethod
-    def send_msg(driver, msg):
-        msg_input = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
-    #     msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
-        msg_input.send_keys(msg)
-        # time.sleep(2)
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
-        # d.find_element_by_xpath("//*[@id='msg_send_bt']").click()
-        # self.driver.find_element_by_id('msg_send_bt').click()
-        time.sleep(0.5)
-        print('Message 1 sent!')
-
 
 if __name__ == "__main__":
     cur = conphantomjs('13250219510')
     cur.main()
 
-    # with open('{user_name}.json'.format(user_name=__username), 'r', encoding='utf-8') as f:
-        #         listCookies = json.loads(f.read())
-        #     for cookie in listCookies:
-        #         d.add_cookie({
-        #             'domain': '.huya.com',  # 此处xxx.com前，需要带点
-        #             'name': cookie['name'],
-        #             'value': cookie['value'],
-        #             'path': '/',
-        #             'expires': None,
-        #             'httpOnly': False,
-        #             'secure': False
-        #         })
-        # d.get(url, cookies=)
-        # -----------------------------------------------------------------
-        # msg_input = WebDriverWait(d, 10).until(
-        #     EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
-        #     msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
-        # msg_input.send_keys('6666')
-        # time.sleep(2)
-        # WebDriverWait(d, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
-        # d.find_element_by_xpath("//*[@id='msg_send_bt']").click()
-        # self.driver.find_element_by_id('msg_send_bt').click()
-        # time.sleep(1)
-        # print('Message 1 sent!')
 
     '''
         用法：
