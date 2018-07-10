@@ -49,8 +49,7 @@ class conphantomjs:
         self.msg = self.user_info['msg']
 
     def load_pickle(self, name):
-        self.logger.info('loading pickle...')
-        print('loading pickle... %s' % name)
+        self.logger.info('loading pickle %s' % name)
         with open('../cookies/{user_name}.pkl'.format(user_name=self.user_name), 'rb')as fp:
             try:
                 n = pickle.load(fp)
@@ -59,7 +58,6 @@ class conphantomjs:
 
             for i in range(0, len(n)):
                 if n[i]['name'] == name:
-                    # print(n[i]['value'])
                     return n[i]['value']
 
     def set_cookies(self, browser):
@@ -175,10 +173,21 @@ class conphantomjs:
         self.logger.info('opening url: %s' % url)
         driver.maximize_window()
         driver.get(url)
-        # time.sleep(0.5)
-        self.set_cookies(driver)
-        time.sleep(0.3)
-        driver.refresh()
+        yy_user_name = self.load_pickle('username')
+        print('user name get from cookies: ' + yy_user_name)
+        yy_user_name_get_from_web = ''
+        print('yy user name get from web: ' + driver.find_element_by_xpath("//span[@id='login-username']").text)
+        try:
+            yy_user_name_get_from_web = driver.find_element_by_xpath("//span[@id='login-username']").text
+        except Exception:
+            print("issue_1")
+        finally:
+            if yy_user_name_get_from_web != yy_user_name:
+                self.set_cookies(driver)
+                time.sleep(0.3)
+                driver.refresh()
+            else:
+                print('still online, no need to set cookies')
 
     def getbody(self, url):
         """利用phantomjs获取网站源码以及url"""
@@ -189,10 +198,8 @@ class conphantomjs:
             if os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
                 self.logger.info('cookie found...')
                 self.open_url_with_cookies(d, url)
-            time.sleep(0.5)
+            time.sleep(0.3)
 
-            # TODO: to judge user name so that no need to set cookie each time
-            # '//*[@id="login-username"]'
         except Exception:
             print("163 Phantomjs Open url Error")
             self.logger.info("Phantomjs Open url Error")
@@ -298,7 +305,6 @@ if __name__ == "__main__":
     cur = conphantomjs('13250219510')
     cur.main()
 
-
     '''
         用法：
         1.实例化类
@@ -348,15 +354,3 @@ if __name__ == "__main__":
     # print("phantomjs num is ", cur.q_phantomjs.qsize())
 
     # https://lgn.yy.com/lgn/oauth/authorize.do?oauth_token=b7e2debe51603ff22075819a5ca17e828810b7de69530da6d59a35a5cb78b5139b85cd08af12b31ec50608b67fa24628&denyCallbackURL=&regCallbackURL=https://www.huya.com/udb_web/udbport2.php?do=callback&UIStyle=xelogin&rdm=0.14674353878945112
-
-    # def is_login(self, driver, room_url):
-    #     # login_name = driver.find_element_by_xpath("//*[@id='login-username']").text
-    #     # print(response.xpath('//span[@id="login-username"]/@title').extract()[0])
-    #     if self.driver.find_element_by_xpath("//*[@id='login-username']").text == "": #//*[@id="login-username"]
-    #         print('Need to login')
-    # self.login()
-    # self.save_cookie()
-    # else:
-    #     print("NO need to login")
-    # driver.get(room_url)
-    # self.send_advertisement(driver)
