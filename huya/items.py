@@ -12,4 +12,5 @@ class HuyaItem(scrapy.Item):
     # define the fields for your item here like:
     _id = scrapy.Field()
     room = scrapy.Field()
+    audiences = scrapy.Field()
     status = scrapy.Field()

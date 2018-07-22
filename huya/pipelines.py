@@ -45,11 +45,25 @@ class HuyaPipeline(object):
 
 if __name__ == "__main__":
     my_conn = HuyaPipeline()
-    my_conn.db['rooms'].remove({})
-    print(my_conn.db['rooms'].count())
-    # result = my_conn.db['rooms'].find_one({'room': '15606846'})
+    # my_conn.db['rooms'].remove({})
+    # print(my_conn.db['rooms'].count())
+    # result = my_conn.db['rooms'].find({}).limit(15).sort('audiences', pymongo.DESCENDING)
     # print(result)
-    # result = my_conn.db['rooms'].find({})
-    # print(result)
-    # for re in result:
-    #     print(re)
+    # for i in result:
+    #     print(i)
+    all = my_conn.db['rooms'].find({}).sort('audiences', pymongo.DESCENDING)
+    print(all)
+    for i in all:
+        print(i)
+    # one = my_conn.db['rooms'].find_one({'room':'752288'})
+    # print(one)
+
+    # all = my_conn.db['rooms'].find({})
+    # i = 0
+    # for a in all:
+    #     print(a['room'])
+    #     i += 1
+    #     if i == 10:
+    #         print('----')
+    #         i = 0
+        # else:continue

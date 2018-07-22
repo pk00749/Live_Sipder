@@ -36,7 +36,7 @@ class HuyaSpiderSpider(CrawlSpider):
 
         self.conn = pymongo.MongoClient(settings['MONGODB_HOST'], settings['MONGODB_PORT'])
         self.db = self.conn[str(settings['MONGODB_DB_NAME'])]
-        # self.db['rooms'].remove({})
+        self.db['rooms'].remove({})
         print(self.db['rooms'].count())
         # ----------------------------
         # chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver.exe"
@@ -93,8 +93,10 @@ class HuyaSpiderSpider(CrawlSpider):
         print('now: ' + str(self.total_rooms))
         for room in range(0, total_rooms_by_page):
             room_id = body_json['data']['datas'][room]['profileRoom']
+            audiences = body_json['data']['datas'][room]['totalCount']
             items['_id'] = room_id
             items['room'] = room_id
+            items['audiences'] = int(audiences)
             items['status'] = 'p'
             yield items
         self.total_rooms = self.total_rooms + total_rooms_by_page
