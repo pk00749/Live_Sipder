@@ -1,4 +1,4 @@
-import threading, queue, time, os, pickle, pymongo
+import threading, queue, time, os, pickle, pymongo, traceback
 from selenium import webdriver
 import logging
 from selenium.webdriver.support.wait import WebDriverWait
@@ -91,8 +91,150 @@ class conphantomjs:
             browser.add_cookie({'name': '__yamid_tt1', 'value': self.load_pickle('__yamid_tt1')})  #
             browser.add_cookie({'name': '__yamid_new', 'value': self.load_pickle('__yamid_new')})  #
             browser.add_cookie({'name': '__yasmid', 'value': self.load_pickle('__yasmid')})  #
-            # print('__yasmid:' + self.load_pickle('__yasmid'))
-
+            # ----------------------------------    -----------------------------------------------------
+            # cookies = [{'domain': '.huya.com',
+            #             'expiry': 1532758307.765327,  # self.load_pickle('expiry')
+            #             'httponly': False,
+            #             'name': 'yyuid',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '2232479408'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1563689508,
+            #             'httponly': False,
+            #             'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '1532153504'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1595225503,
+            #             'httponly': False,
+            #             'name': '__yamid_new',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': 'C812424C2E400001155283A7E31F173F'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.670929,
+            #             'httponly': False,
+            #             'name': 'h_pr',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '1'},
+            #            {'domain': '.huya.com',
+            #             'httponly': False,
+            #             'name': '__yaoldyyuid',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '2232479408'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765375,
+            #             'httponly': False,
+            #             'name': 'username',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '2232684128yy'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765426,
+            #             'httponly': False,
+            #             'name': 'password',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '1080B19C38B001F577B5CE1A2F4AC7E6C90CD9EA'},
+            #            {'domain': '.www.huya.com',
+            #             'expiry': 1532154404,
+            #             'httponly': False,
+            #             'name': 'udboauthtmptokensec',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': ''},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765479,
+            #             'httponly': False,
+            #             'name': 'osinfo',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': 'A9BC19EC3332C0E66BEB312C5F57EE90C2C863EC'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765559,
+            #             'httponly': False,
+            #             'name': 'udb_l',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': 'DAAyMjMyNjg0MTI4eXn5zlJbBXQAuorH3a8Cu0r1n7s7lqueKMxNT_wFPTqgIVRb27wOem0DRrWFh9tbJYBPpBxaV7uFTGawl7D5JHpXqRMBec9iPKJEVyLyuoO1b5lK3Y2j7ZeAkYG2agwFQiaCT8Sn2Fb-_q8GxUbfBiDzkgJ_Ua4c1DXTowcAAAAAAwAAAAAAAAANADExMy42NS43MC4xMjcEADUyMTY='},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765642,
+            #             'httponly': False,
+            #             'name': 'udb_n',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '1f874dbbdc9ff1cdd878535946710594e953606b03e352832fa2ddb93800389dc43af091259da3294f3f9ce07ea86c47'},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765698,
+            #             'httponly': False,
+            #             'name': 'udb_c',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': 'AMCMJFBqAAJgAIHYXhNvTxCQnvsyBBeBBaC3FbhJpB_iU-FKvylZC0qGE5cikJfPcHNqbT5dGM2mcAahQjN_Ti4PdI5nvB0_MbpAGwAi8mkoQNzZsVHDcAbUVHWvNZ_P6_Zy9sXpy0uYQg=='},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1532758307.765766,
+            #             'httponly': False,
+            #             'name': 'udb_oar',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': 'B0FF910348709973354E6859AD6723ED5AABE06FE4CCED0AB5DE5F35656C4F2101F5A1E758D2E4A97A7CF87F9EBAE8306D406B0F1813766C824211A89EE6BAC81F7C3C76E3D88E8BF0FB61CB971FCF4425E0129BDBD9B246A3264F02B3640AA161E5B0164360B1207270CFA79439F9ACFE8A5635C6BCC27F953C7A758387682A55163D368CF35FDC3F25118349837AED376BBDD9C9BA3AF79B4FC838C089FE240AFCB453B2FE3CE4394DEFF99F0C35FDD86AD246FF690E115D91BE807BFCE8C75D5011DF7EB649A21C873ADF45D43594BE904AA92FFF6EA3C877115B466BFCE9C7E455EFFF50D27BBDEEC5BB8C9A15E6732D4D9A0FFD8EA6B87C4EE0B6FAC8EF1B462596C98501931528C67770FCEE54CEFDAC7EB63C8E40F9D51CBC2B3FA1E0F254E283CF3096C2AB05F2322E4FA109832318BEE5CD78D8B373B6728D67F0FF'},
+            #            {'domain': '.huya.com',
+            #             'httponly': False,
+            #             'name': 'Hm_lpvt_51700b6c722f5bb4cf39906a596ea41f',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '1532153508'},
+            #            {'domain': '.huya.com',
+            #             'httponly': False,
+            #             'name': '_yasids',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '__rootsid%3DC812424D6780000194B33A2410001FCE'},
+            #            {'domain': '.www.huya.com',
+            #             'expiry': 1532154404,
+            #             'httponly': False,
+            #             'name': 'udboauthtmptoken',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': ''},
+            #            {'domain': '.huya.com',
+            #             'expiry': 1592633503,
+            #             'httponly': False,
+            #             'name': '__yamid_tt1',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': 0.4355501874982597},
+            #            {'domain': '.huya.com',
+            #             'httponly': False,
+            #             'name': '__yasmid',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '0.4355501874982597'},
+            #            {'domain': '.huya.com',
+            #             'httponly': False,
+            #             'name': 'PHPSESSID',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '9digc4jmi78t0lcu3g8glu8l40'},
+            #            {'domain': '.huya.com',
+            #             'httponly': False,
+            #             'name': 'udb_passdata',
+            #             'path': '/',
+            #             'secure': False,
+            #             'value': '1'}]
+            # browser.delete_all_cookies()
+            # for cookie in cookies:
+            #     if 'expiry' in cookie:
+            #         browser.add_cookie({k:cookie[k] for k in ('name','value','domain', 'path', 'expiry')})
+            #     else:
+            #         browser.add_cookie({k: cookie[k] for k in ('name', 'value', 'domain', 'path')})
+            # for i in range(len(cookies)):
+            #     browser.add_cookie(cookies[i])
+            # ----------------------------------------------------------------------------------------
             # browser.add_cookie({'name': 'Hm_lvt_51700b6c722f5bb4cf39906a596ea41f', 'value': '1531028179'})  #
             # browser.add_cookie({'name': 'h_pr', 'value': '1'})  #
             # browser.add_cookie({'name': 'udb_passdata', 'value': '1'})
@@ -182,6 +324,7 @@ class conphantomjs:
         except Exception:
             print("issue_1")
         finally:
+            print("yy user name get from web != user name get from cookies")
             if yy_user_name_get_from_web != yy_user_name:
                 self.set_cookies(driver)
                 time.sleep(0.3)
@@ -198,12 +341,17 @@ class conphantomjs:
             if os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
                 self.logger.info('cookie found...')
                 self.open_url_with_cookies(d, url)
-            time.sleep(0.3)
-
-        except Exception:
-            print("163 Phantomjs Open url Error")
+                time.sleep(2)
+            else:
+                print('issue_2')
+            print("issue_3")
+        except Exception as e:
+            print(e.args)
+            print(traceback.print_exc())
             self.logger.info("Phantomjs Open url Error")
+        time.sleep(2)
         self.send_msg(d, self.msg)
+        time.sleep(5)
         self.q_phantomjs.put(d)
 
     def open_phantomjs(self):
@@ -212,7 +360,6 @@ class conphantomjs:
             # service_args = []
             # service_args.append('--disk-cache=yes')
             # service_args.append('--ignore-ssl-errors=true')
-            # d = webdriver.PhantomJS(service_args=service_args)  # service_args=conphantomjs.service_args
             # d = webdriver.PhantomJS() # service_args=service_args # service_args.append('--load-image=no')
             # d.set_page_load_timeout(self.phantomjs_timeout)  ##设置超时时间
             # d.implicitly_wait(self.phantomjs_timeout)  # 设置超时时间
@@ -230,7 +377,7 @@ class conphantomjs:
             th.append(t)
         for i in th:
             i.start()
-            time.sleep(float(self.interval_time)) # conphantomjs.jiange)  # 设置开启的时间间隔
+            time.sleep(float(self.interval_time))  # conphantomjs.jiange)  # 设置开启的时间间隔
         for i in th:
             i.join()
 
@@ -252,16 +399,20 @@ class conphantomjs:
 
     @staticmethod
     def send_msg(driver, msg):
-        msg_input = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
-        #     msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
-        msg_input.send_keys(msg)
-        # time.sleep(2)
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
-        # d.find_element_by_xpath("//*[@id='msg_send_bt']").click()
-        # self.driver.find_element_by_id('msg_send_bt').click()
-        time.sleep(0.5)
-        print('Message 1 sent!')
+        try:
+            msg_input = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, "//*[@id='pub_msg_input']")))
+            #     msg_input = self.driver.find_element_by_xpath("//*[@id='pub_msg_input']")
+            msg_input.send_keys(msg)
+            # time.sleep(2)
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'msg_send_bt'))).click()
+            # d.find_element_by_xpath("//*[@id='msg_send_bt']").click()
+            # self.driver.find_element_by_id('msg_send_bt').click()
+            time.sleep(5)
+        finally:
+            print('Message 1 sent!')
+        # //*[@id="chat-room__list"]/li[81]/div/span[1]
+        # //*[@id="chat-room__list"]/li[70]/div/span[4]
 
     def main(self):
         # 1. check cookies exist or not. if not, give cookies
@@ -279,23 +430,24 @@ class conphantomjs:
             self.logger.info("no urls...")
             return
 
-        rooms = self.db['rooms'].find({})
+        rooms = self.db['rooms'].find({'audiences':{'$gt':10000}}).sort('audiences', pymongo.DESCENDING)
         no = 0
         for r in rooms:
             no += 1
+            urls.append(r['room'])
             if no == 10:
-                urls.append(r['room'])
-                no = 0
-            th = []
-            for i in urls:
-                i = BASE_URL_FOR_ROOM + i
-                t = threading.Thread(target=self.getbody, args=(i,))
-                th.append(t)
-            for i in th:
-                i.start()
-            for i in th:
-                i.join()
-            urls = []
+                break
+        no = 0
+        th = []
+        for i in urls:
+            i = BASE_URL_FOR_ROOM + i
+            t = threading.Thread(target=self.getbody, args=(i,))
+            th.append(t)
+        for i in th:
+            i.start()
+        for i in th:
+            i.join()
+        urls.clear()
 
         self.close_phantomjs()
         print("phantomjs num is ", self.q_phantomjs.qsize())
