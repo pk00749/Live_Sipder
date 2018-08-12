@@ -1,6 +1,6 @@
-import threading, queue, time, os, pickle, pymongo, traceback
-from selenium import webdriver
+import threading, queue, time, os, pickle, pymongo, traceback, sys
 import logging
+from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -16,10 +16,11 @@ MONGODB_CONFIG = {
 
 HOME_PAGE = 'https://www.huya.com/g'
 BASE_URL_FOR_ROOM = 'https://www.huya.com/'
+RUNNING_PATH = os.path.join(os.path.split(os.path.abspath(__file__))[0], '..')
 
 logging.basicConfig(level=logging.INFO,
                     # filename='./huya/log/in_room.log',
-                    filename='../log/in_room.log',
+                    filename=os.path.join(RUNNING_PATH, './log/in_room.log'),
                     datefmt='%Y/%m/%d %H:%M:%S',
                     format='%%(asctime)s - %(name)s - %(levelname)s - %(lineno)d - %(module)s - %(message)s')
 
@@ -32,6 +33,10 @@ class conphantomjs:
     def __init__(self, name):
         self.logger = logging.getLogger(__name__)
         self.logger.info('Initialing...')
+        print(os.path.realpath(__file__))
+        print(__file__)
+        print(os.path.dirname(__file__))
+        print(os.path.split(os.path.abspath(__file__))[0])
         huya_config = HUYA_CONFIG()
         self.huya_config = huya_config.get_huya_config()
         self.interval_time = self.huya_config['interval_time']  # 开启phantomjs间隔
@@ -50,7 +55,7 @@ class conphantomjs:
 
     def load_pickle(self, name):
         self.logger.info('loading pickle %s' % name)
-        with open('../cookies/{user_name}.pkl'.format(user_name=self.user_name), 'rb')as fp:
+        with open(os.path.join(RUNNING_PATH, './cookies/{user_name}.pkl'.format(user_name=self.user_name)), 'rb')as fp:
             try:
                 n = pickle.load(fp)
             except EOFError:
@@ -309,7 +314,7 @@ class conphantomjs:
     def saveCookies(self, driver):
         self.logger.info('saving cookies, user name: %s' % self.user_name)
         print(driver.get_cookies())
-        pickle.dump(driver.get_cookies(), open("../cookies/{user_name}.pkl".format(user_name=self.user_name), "wb"))
+        pickle.dump(driver.get_cookies(), open(os.path.join(RUNNING_PATH, "./cookies/{user_name}.pkl".format(user_name=self.user_name)), "wb"))
 
     def open_url_with_cookies(self, driver, url):
         self.logger.info('opening url: %s' % url)
@@ -338,7 +343,7 @@ class conphantomjs:
         print('room: ' + url)
         print('driver id: ' + str(d))
         try:
-            if os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
+            if os.path.exists(os.path.join(RUNNING_PATH, './cookies/{user_name}.pkl'.format(user_name=self.user_name))):
                 self.logger.info('cookie found...')
                 self.open_url_with_cookies(d, url)
                 time.sleep(2)
@@ -416,7 +421,7 @@ class conphantomjs:
 
     def main(self):
         # 1. check cookies exist or not. if not, give cookies
-        if not os.path.exists('../cookies/{user_name}.pkl'.format(user_name=self.user_name)):
+        if not os.path.exists(os.path.join(RUNNING_PATH,'./cookies/{user_name}.pkl'.format(user_name=self.user_name))):
             self.access()
 
         # 2. run open_phantomjs, create the process of phantomjs
@@ -456,7 +461,6 @@ class conphantomjs:
 if __name__ == "__main__":
     cur = conphantomjs('13250219510')
     cur.main()
-
     '''
         用法：
         1.实例化类

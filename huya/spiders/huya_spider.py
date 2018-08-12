@@ -25,9 +25,9 @@ class HuyaSpiderSpider(CrawlSpider):
         self.logger.info(__name__)
         print(__name__)
         super(HuyaSpiderSpider, self).__init__(*args, **kwargs)
-        # self.user_info = kwargs.get('user')
-        # self.user_name = self.user_info.get('user_name')
-        self.user_name = '13250219510'#TODO:Testing
+        self.user_info = kwargs.get('user')
+        self.user_name = self.user_info.get('user_name')
+        # self.user_name = '13250219510'#TODO:Testing
         print('Spider initialing, user name: {user_name}'.format(user_name=self.user_name))  # % str(self.user_name))
         user_profile = USER_PROFILE(self.user_name)
         self.user_info = user_profile.get_user_profile()
