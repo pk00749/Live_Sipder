@@ -1,0 +1,43 @@
+﻿mongod --bind_ip 127.0.0.1 --logpath "G:\Program\Projects\Live_Sipder\log\mongodb.log" --dbpath "G:\Program\Projects\Live_Sipder\huya\data\db" --port 27017 --install --journal
+
+
+创建配置文件
+
+创建一个配置文件。该文件必须设置 systemLog.path 参数，包括一些附加的配置选项更好。
+
+例如，创建一个配置文件位于 C:\mongodb\mongod.cfg，其中指定 systemLog.path 和 storage.dbPath。具体配置内容如下：
+
+systemLog:
+    destination: file
+    path: c:\data\log\mongod.log
+storage:
+    dbPath: c:\data\db
+安装 MongoDB服务
+通过执行mongod.exe，使用--install选项来安装服务，使用--config选项来指定之前创建的配置文件。
+
+C:\mongodb\bin\mongod.exe --config "C:\mongodb\mongod.cfg" --install
+要使用备用 dbpath，可以在配置文件（例如：C:\mongodb\mongod.cfg）或命令行中通过 --dbpath 选项指定。
+
+如果需要，您可以安装 mongod.exe 或 mongos.exe 的多个实例的服务。只需要通过使用 --serviceName 和 --serviceDisplayName 指定不同的实例名。只有当存在足够的系统资源和系统的设计需要这么做。
+
+启动MongoDB服务
+
+net start MongoDB
+关闭MongoDB服务
+
+net stop MongoDB
+
+移除 MongoDB 服务
+
+C:\mongodb\bin\mongod.exe --remove
+
+
+
+今天配置MongoDB的时候，一直错误。看了一下错误信息，[initandlisten] exception in initAndListen: 28663 Cannot start server. The default storage engine 'wiredTiger' is not available with this build of mongod. Please specify a different storage engine explicitly, e.g. --storageEngine=mmapv1., terminating
+
+在网上搜索一下，原来是32位系统的问题，网上搜索了一下，输入命令mongod.exe -dbpath D:\mongodbData -storageEngine=mmapv1 
+
+结果报了另一个错误，
+
+exception in initAndList
+en: 29 Data directory C:\data\db\ not found., terminating原来是dbpath路径错了，换成mongod.exe -dbpath 自己的路径 -storageEngine=mmapv1 

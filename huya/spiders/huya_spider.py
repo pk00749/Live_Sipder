@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-import scrapy
 import sys
 sys.path.append('../')
 from scrapy.spiders import CrawlSpider, Rule
-from scrapy.selector import Selector
 from huya.items import HuyaItem
-import json, os, pymongo
+import json, pymongo
 from scrapy.http import Request
 from selenium import webdriver
 from huya.spiders.config import USER_PROFILE

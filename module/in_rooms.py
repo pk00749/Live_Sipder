@@ -31,7 +31,7 @@ class conphantomjs:
 
     def __init__(self, name, password, msg):
         self.logger = logging.getLogger(__name__)
-        self.logger.info('Initialing...')
+        self.logger.info('Thread initialing...')
         self.phantomjs_max = PHANTOMJS_MAX  # 同时开启phantomjs个数
         self.conn = pymongo.MongoClient(MONGODB_CONFIG['host'], MONGODB_CONFIG['port'])
         self.db = self.conn[MONGODB_CONFIG['db_name']]
